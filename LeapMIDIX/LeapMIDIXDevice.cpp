@@ -11,15 +11,19 @@
 
 static void fatal(const char *msg);
 
-LeapMIDIX::Device::Device() {
+namespace LeapMIDIX {
+
+Device::Device() {
     deviceClient = NULL;
     deviceEndpoint = NULL;
     deviceOutputPort = NULL;
-    
+}
+
+void Device::init() {
     createDevice();
 }
 
-LeapMIDIX::Device::~Device() {
+Device::~Device() {
     if (deviceOutputPort)
         MIDIPortDispose(deviceOutputPort);
     if (deviceEndpoint)
@@ -30,7 +34,7 @@ LeapMIDIX::Device::~Device() {
     std::cout << "closed down device\n";
 }
 
-void LeapMIDIX::Device::createDevice() {
+void Device::createDevice() {
     OSStatus result;
     
     result = MIDIClientCreate(CFSTR("LeapMIDIX"), NULL, NULL, &deviceClient);
@@ -47,10 +51,12 @@ void LeapMIDIX::Device::createDevice() {
     
 }
 
-OSStatus LeapMIDIX::Device::send(const MIDIPacketList *pktlist) {
+OSStatus Device::send(const MIDIPacketList *pktlist) {
     return MIDIReceived(deviceEndpoint, pktlist);
 }
 
+}
+    
 ///
 
 static void fatal(const char *msg) {

@@ -19,6 +19,8 @@ namespace LeapMIDIX {
     public:
         Device();
         ~Device();
+        void init();
+        
         OSStatus send(const MIDIPacketList *pktlist);
         
     protected:

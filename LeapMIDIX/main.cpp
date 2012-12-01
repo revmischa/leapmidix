@@ -20,6 +20,9 @@ LeapMIDIX::Device *device = new LeapMIDIX::Device();
 int main(int argc, const char * argv[]) {    
     std::cout << "Leap MIDI device initalized" << std::endl;
     
+    // TODO: MOVE THIS!!!
+    device->init();
+    
     while (1) {
         sendNote();
         usleep(2000 * 1000);
