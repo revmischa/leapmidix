@@ -11,7 +11,7 @@
 
 #include <iostream>
 #include <CoreMIDI/CoreMIDI.h>
-//#include <GL/glew.h>
+#include <glew.h>
 #include "LeapMIDI.h"
 
 namespace LeapMIDIX {
