@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 DBA int80. All rights reserved.
 //
 
-#include "LeapMIDIXDevice.h"
+#include "MIDIXDevice.h"
 //#include "LeapMIDI.h"
 
 static void fatal(const char *msg);

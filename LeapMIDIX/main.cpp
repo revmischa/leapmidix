@@ -9,24 +9,25 @@
 #include <iostream>
 #include <unistd.h>
 #include <time.h>
-#include "LeapMIDIXDevice.h"
+#include "MIDIXDevice.h"
+#include "Visualizer.h"
 #include <mach/mach.h>
 #include <mach/mach_time.h>
 
-void sendNote();
+using namespace LeapMIDIX;
 
-LeapMIDIX::Device *device = new LeapMIDIX::Device();
+void sendNote();
 
 int main(int argc, const char * argv[]) {    
     std::cout << "Leap MIDI device initalized" << std::endl;
     
-    // TODO: MOVE THIS!!!
-    device->init();
+    // create virtual midi source
+    Device *device = new Device();
+//    device->init();
     
-    while (1) {
-        sendNote();
-        usleep(2000 * 1000);
-    }
+    // initialize visualizer
+    Visualizer *viz = new Visualizer();
+    viz->init();
     
     std::cin.get();
     
@@ -54,5 +55,5 @@ void sendNote() {
         std::cerr << "Failed to add MIDI packet" << std::endl;
         return;
     }
-    device->send(packetList);
+//    device->send(packetList);
 }
