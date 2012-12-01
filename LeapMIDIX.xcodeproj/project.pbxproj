@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		C3F81439166A08170039AB7E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3F81438166A08170039AB7E /* main.cpp */; };
 		C3F8143B166A08170039AB7E /* LeapMIDIX.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C3F8143A166A08170039AB7E /* LeapMIDIX.1 */; };
+		C3F81443166A08780039AB7E /* LeapMIDIXDevice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3F81441166A08780039AB7E /* LeapMIDIXDevice.cpp */; };
+		C3F81445166A08A10039AB7E /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3F81444166A08A10039AB7E /* CoreMIDI.framework */; };
+		C3F81447166A08B50039AB7E /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3F81446166A08B50039AB7E /* CoreFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,6 +31,10 @@
 		C3F81434166A08170039AB7E /* LeapMIDIX */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LeapMIDIX; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3F81438166A08170039AB7E /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		C3F8143A166A08170039AB7E /* LeapMIDIX.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = LeapMIDIX.1; sourceTree = "<group>"; };
+		C3F81441166A08780039AB7E /* LeapMIDIXDevice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LeapMIDIXDevice.cpp; sourceTree = "<group>"; };
+		C3F81442166A08780039AB7E /* LeapMIDIXDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeapMIDIXDevice.h; sourceTree = "<group>"; };
+		C3F81444166A08A10039AB7E /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
+		C3F81446166A08B50039AB7E /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +42,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3F81447166A08B50039AB7E /* CoreFoundation.framework in Frameworks */,
+				C3F81445166A08A10039AB7E /* CoreMIDI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +53,8 @@
 		C3F81429166A08170039AB7E = {
 			isa = PBXGroup;
 			children = (
+				C3F81446166A08B50039AB7E /* CoreFoundation.framework */,
+				C3F81444166A08A10039AB7E /* CoreMIDI.framework */,
 				C3F81437166A08170039AB7E /* LeapMIDIX */,
 				C3F81435166A08170039AB7E /* Products */,
 			);
@@ -60,6 +71,8 @@
 		C3F81437166A08170039AB7E /* LeapMIDIX */ = {
 			isa = PBXGroup;
 			children = (
+				C3F81441166A08780039AB7E /* LeapMIDIXDevice.cpp */,
+				C3F81442166A08780039AB7E /* LeapMIDIXDevice.h */,
 				C3F81438166A08170039AB7E /* main.cpp */,
 				C3F8143A166A08170039AB7E /* LeapMIDIX.1 */,
 			);
@@ -118,6 +131,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3F81439166A08170039AB7E /* main.cpp in Sources */,
+				C3F81443166A08780039AB7E /* LeapMIDIXDevice.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
