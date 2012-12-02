@@ -15,7 +15,10 @@ namespace LeapMIDIX {
         this->terminate();
     }
     
-    int Visualizer::init() {        
+    int Visualizer::init(Listener *listener_) {
+        // save listener instance so we can interrogate it when drawing
+        listener = listener_;
+        
         // main glfw turn on
         if(! glfwInit()) {
             fprintf( stderr, "Failed to initialize GLFW\n" );
@@ -48,6 +51,8 @@ namespace LeapMIDIX {
     void Visualizer::drawLoop() {
         do {
             glClear( GL_COLOR_BUFFER_BIT );
+            
+            glClearColor(listener->isLeapDeviceConnected() ? 0 : 1, 0, 0, 0);
             
             // Swap buffers
             glfwSwapBuffers();

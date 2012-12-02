@@ -14,6 +14,11 @@
 #include "Listener.h"
 
 namespace LeapMIDIX {
+    Listener::Listener() {
+        viz = NULL;
+        device = NULL;
+    }
+    
     void Listener::init() {
         std::cout << "Leap MIDI device initalized" << std::endl;
         
@@ -21,24 +26,34 @@ namespace LeapMIDIX {
         device = new Device();
         device->init();
         
+        viz = NULL;
+#ifdef LMX_VISUALIZER_ENABLED
         // initialize visualizer
         viz = new Visualizer();
-        viz->init();
+        viz->init(this);
+#endif
     }
     
     Listener::~Listener() {
-        delete device;
-        delete viz;
+        if (viz)
+            delete viz;
+        if (device)
+            delete device;
     }
     
-    void Listener::onConnected() {
+    void LeapMIDIX::Listener::onInit(const Leap::Controller& controller) {
+        std::cout << "Leap device initialized\n";
+        leapDeviceInitialized = 1;
+    }
+    
+    void LeapMIDIX::Listener::onConnect(const Leap::Controller& controller) {
+        std::cout << "Leap device connected\n";
         leapDeviceConnected = 1;
     }
-    void Listener::onDisconnected() {
+    
+    void LeapMIDIX::Listener::onDisconnect(const Leap::Controller& controller) {
+        std::cout << "Leap device disconnected\n";
         leapDeviceConnected = 0;
-    }
-    void Listener::onInit() {
-        leapDeviceInitialized = 1;
     }
     short Listener::isLeapDeviceInitialized() {
         return leapDeviceInitialized;
@@ -85,6 +100,10 @@ namespace LeapMIDIX {
     }
     
     void Listener::drawLoop() {
+#ifdef LMX_VISUALIZER_ENABLED
         viz->drawLoop();
+#else
+        std::cin.get();
+#endif
     }
 }

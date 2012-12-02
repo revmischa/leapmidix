@@ -13,15 +13,18 @@
 #include <map>
 
 #include "MIDITool.h"
+#include "Listener.h"
 
 namespace LeapMIDIX {
+    class Listener;
+    
     class Visualizer {
     public:
         ~Visualizer();
         
         // open window, set up glfw
         // returns true on success
-        int init();
+        int init(Listener *listener);
         
         // clean up GL
         void terminate();
@@ -31,6 +34,9 @@ namespace LeapMIDIX {
         
         // TODO: fill this in
         void drawTools(const std::map<LeapMIDI::MIDITool::ToolDescription, LeapMIDI::MIDIToolPtr>&) { }
+        
+    private:
+        LeapMIDIX::Listener *listener;
     };
 }
 
