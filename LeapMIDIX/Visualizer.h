@@ -16,7 +16,24 @@
 #include "Listener.h"
 
 namespace LeapMIDIX {
+
     class Listener;
+
+    class VerticalBar {
+    public:
+        VerticalBar(int origin_x, int origin_y);
+        
+        void draw();
+        
+    private:
+        int absolute_min_;
+        int absolute_max_;
+        
+        int user_set_min_;
+        int user_set_max_;
+        
+        int current_value_;
+    };
     
     class Visualizer {
     public:
