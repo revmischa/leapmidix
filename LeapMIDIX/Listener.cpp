@@ -68,25 +68,40 @@ namespace LeapMIDIX {
         // get most recent frame
         Leap::Frame frame = controller.frame();
         
-        /*
         if (frame.hands().empty())
             return;
-        
+
+        processFrameRaw(frame);
+//        processFrameTools(frame);
+    }
+    
+    // really simple finger->midi control processing, useful for testing and demoing
+    void Listener::processFrameRaw(const Leap::Frame &frame) {        
         Leap::Hand hand = frame.hands()[0];
-        if (hand.fingers().empty())
+        unsigned int fingerCount = (unsigned int)hand.fingers().size();
+
+        if (! fingerCount)
             return;
         
-        Leap::Finger finger = hand.fingers()[0];
-        unsigned int value = finger.tip().position.y;
+        unsigned int value = 0;
+        
+        // average finger Y coords
+        for (int i = 0; i < fingerCount; i++) {
+            value += hand.fingers()[i].tip().position.y;
+        }
+        value /= fingerCount;
+        
+        value -= 30; // min Y value
         if (value > 127) value = 127; // TODO: map into range
-        device->write(0, value);
-        return;
-        */
-         
+        device->writeControl(fingerCount, value);
+    }
+    
+    // fancy processing of frames to generate abstract tools
+    void Listener::processFrameTools(const Leap::Frame &frame) {
         LeapMIDI::MIDIToolController::instance().process_frame(frame);
         
         // write all the values to the midi divice
-        for (std::map<LeapMIDI::MIDITool::ToolDescription, LeapMIDI::MIDIToolPtr>::const_iterator it = LeapMIDI::MIDIToolController::instance().tools().begin();
+        for (std::map<LeapMIDIControl, LeapMIDI::MIDIToolPtr>::const_iterator it = LeapMIDI::MIDIToolController::instance().tools().begin();
              it != LeapMIDI::MIDIToolController::instance().tools().end(); ++it) {
             
             if (it->second->active())

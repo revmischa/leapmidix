@@ -41,6 +41,9 @@ namespace LeapMIDIX {
         short isLeapDeviceInitialized();
         
     protected:
+        void processFrameRaw(const Leap::Frame &frame);
+        void processFrameTools(const Leap::Frame &frame);
+        
         short leapDeviceInitialized;
         short leapDeviceConnected;
         Device *device;

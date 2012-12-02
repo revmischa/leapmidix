@@ -162,9 +162,9 @@ namespace LeapMIDIX {
         glfwTerminate();
     }
     
-    void Visualizer::drawTools(const std::map<LeapMIDI::MIDITool::ToolDescription,
+    void Visualizer::drawTools(const std::map<LeapMIDIControl,
         LeapMIDI::MIDIToolPtr>& tools) {
-        for (std::map<LeapMIDI::MIDITool::ToolDescription,
+        for (std::map<LeapMIDIControl,
              LeapMIDI::MIDIToolPtr>::const_iterator it = tools.begin(); it !=
              tools.end(); ++it) {
             

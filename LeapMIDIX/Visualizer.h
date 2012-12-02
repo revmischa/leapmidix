@@ -59,7 +59,7 @@ namespace LeapMIDIX {
         // run forever, drawing frames
         void drawLoop();
         
-        void drawTools(const std::map<LeapMIDI::MIDITool::ToolDescription, LeapMIDI::MIDIToolPtr>&);
+        void drawTools(const std::map<LeapMIDIControl, LeapMIDI::MIDIToolPtr>&);
         
     private:
         std::map<LeapMIDI::MIDIToolPtr, VerticalBarPtr> toolBarMap_;
