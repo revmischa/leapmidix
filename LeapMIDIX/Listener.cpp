@@ -55,8 +55,6 @@ namespace LeapMIDIX {
          
         LeapMIDI::MIDIToolController::instance().process_frame(frame);
         
-        
-        
         // write all the values to the midi divice
         for (std::map<LeapMIDI::MIDITool::ToolDescription, LeapMIDI::MIDIToolPtr>::const_iterator it = LeapMIDI::MIDIToolController::instance().tools().begin();
              it != LeapMIDI::MIDIToolController::instance().tools().end(); ++it) {
