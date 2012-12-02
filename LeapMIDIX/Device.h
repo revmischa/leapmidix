@@ -1,5 +1,4 @@
 //
-//  LeapMIDIXDevice.h
 //  LeapMIDIX
 //
 //  Created by Mischa Spiegelmock on 12/1/12.
@@ -30,7 +29,6 @@ namespace LeapMIDIX {
         void createDevice();
         MIDIClientRef deviceClient;
         MIDIEndpointRef deviceEndpoint;
-        MIDIPortRef deviceOutputPort;
         MIDIPacketList *midiPacketList;
         unsigned int packetListSize;
         MIDIPacket *curPacket;
