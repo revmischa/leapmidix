@@ -10,12 +10,17 @@
 #define __LeapMIDIX__Visualizer__
 
 #include <iostream>
+#include <map>
+
+#include "MIDITool.h"
 
 namespace LeapMIDIX {
     class Visualizer {
     public:
         void init();
         
+    void draw_tools(const std::map<LeapMIDI::MIDITool::ToolDescription, LeapMIDI::MIDIToolPtr>&);
+    
     };
 }
 

@@ -9,8 +9,7 @@
 #include <iostream>
 #include <unistd.h>
 #include <time.h>
-#include "MIDIXDevice.h"
-#include "Visualizer.h"
+#include "Listener.h"
 #include <mach/mach.h>
 #include <mach/mach_time.h>
 
@@ -18,20 +17,12 @@ using namespace LeapMIDIX;
 
 void sendNote();
 
-int main(int argc, const char * argv[]) {    
-    std::cout << "Leap MIDI device initalized" << std::endl;
-    
-    // create virtual midi source
-    Device *device = new Device();
-//    device->init();
-    
-    // initialize visualizer
-    Visualizer *viz = new Visualizer();
-    viz->init();
+int main(int argc, const char * argv[]) {
+    Listener *listener = new Listener();
+    listener->init();
     
     std::cin.get();
     
-    delete device;
     return 0;
 }
 
