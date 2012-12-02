@@ -2,7 +2,7 @@
 //  Visualizer.h
 //  LeapMIDIX
 //
-//  Created by Snooz on 12/1/12.
+//  Created by Mischa Spiegelmock on 12/1/12.
 //  Copyright (c) 2012 DBA int80. All rights reserved.
 //
 
@@ -17,11 +17,17 @@
 namespace LeapMIDIX {
     class Visualizer {
     public:
-        void init();
+        ~Visualizer();
+        
+        // open window, set up glfw
+        // returns true on success
+        int init();
+        
+        // clean up GL
+        void terminate();
         
         // TODO: fill this in
         void drawTools(const std::map<LeapMIDI::MIDITool::ToolDescription, LeapMIDI::MIDIToolPtr>&) { }
-    
     };
 }
 

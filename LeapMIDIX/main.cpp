@@ -10,8 +10,6 @@
 #include <unistd.h>
 #include <time.h>
 #include "Listener.h"
-#include <mach/mach.h>
-#include <mach/mach_time.h>
 
 using namespace LeapMIDIX;
 
