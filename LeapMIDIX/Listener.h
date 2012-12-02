@@ -11,16 +11,16 @@
 
 #include <iostream>
 #include "MIDITool.h"
-#include "LeapMIDI.h"
 #include "Visualizer.h"
 #include "Device.h"
+#include "Leap.h"
 
 #define LMX_VISUALIZER_ENABLED 1
 
 namespace LeapMIDIX {
     class Visualizer;
     
-    class Listener : public LeapMIDI::Listener {
+    class Listener : public Leap::Listener {
     public:
         Listener();
         virtual ~Listener();
@@ -28,11 +28,11 @@ namespace LeapMIDIX {
         void init();
         
         // callback for each leap device frame
-        void onFrame(const Leap::Controller&);
+        virtual void onFrame(const Leap::Controller&);
         // leap device status callbacks
-        void onConnect(const Leap::Controller& controller);
+        virtual void onConnect(const Leap::Controller& controller);
         virtual void onDisconnect(const Leap::Controller& controller);
-        void onInit(const Leap::Controller& controller);
+        virtual void onInit(const Leap::Controller& controller);
         
         // run forever, drawing frames
         void drawLoop();

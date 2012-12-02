@@ -13,7 +13,6 @@
 
 #include <iostream>
 #include <CoreMIDI/CoreMIDI.h>
-#include "LeapMIDI.h"
 
 namespace LeapMIDIX {
     class Device {
