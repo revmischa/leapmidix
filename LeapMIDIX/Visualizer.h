@@ -36,7 +36,8 @@ namespace LeapMIDIX {
         void drawTools(const std::map<LeapMIDI::MIDITool::ToolDescription, LeapMIDI::MIDIToolPtr>&) { }
         
     private:
-        LeapMIDIX::Listener *listener;
+
+        LeapMIDIX::Listener *listener;        
     };
 }
 
