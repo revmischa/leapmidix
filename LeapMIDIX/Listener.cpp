@@ -37,6 +37,7 @@ namespace LeapMIDIX {
         // get most recent frame
         Leap::Frame frame = controller.frame();
         
+        /*
         if (frame.hands().empty())
             return;
         
@@ -50,6 +51,8 @@ namespace LeapMIDIX {
         device->write(0, value);
         return;
         
+        */
+         
         LeapMIDI::MIDIToolController::instance().process_frame(frame);
         
         
@@ -58,8 +61,11 @@ namespace LeapMIDIX {
         for (std::map<LeapMIDI::MIDITool::ToolDescription, LeapMIDI::MIDIToolPtr>::const_iterator it = LeapMIDI::MIDIToolController::instance().tools().begin();
              it != LeapMIDI::MIDIToolController::instance().tools().end(); ++it) {
             
-            device->write(it->second->channel(), it->second->value());
+            if (it->second->active())
+                device->write(it->second->channel(), it->second->value());
         }
+        
+        viz->drawTools(LeapMIDI::MIDIToolController::instance().tools());
         
         //MIDIToolController::instance().process_frame(frame);
     }

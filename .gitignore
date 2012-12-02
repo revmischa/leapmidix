@@ -1,4 +1,5 @@
 # Xcode
+*.xcuserstate
 build/*
 *.pbxuser
 !default.pbxuser
@@ -14,13 +15,4 @@ xcuserdata
 profile
 *.moved-aside
 .DS_STORE
-
-# Compiled Object files
-*.slo
-*.lo
-*.o
-
-# Compiled Static libraries
-*.lai
-*.la
 

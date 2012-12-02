@@ -19,7 +19,7 @@ namespace LeapMIDIX {
     public:
         void init();
         
-    void draw_tools(const std::map<LeapMIDI::MIDITool::ToolDescription, LeapMIDI::MIDIToolPtr>&);
+    void drawTools(const std::map<LeapMIDI::MIDITool::ToolDescription, LeapMIDI::MIDIToolPtr>&);
     
     };
 }
