@@ -22,7 +22,7 @@ int main(int argc, const char * argv[]) {
     Leap::Controller controller(listener);
     
     // run forever
-    std::cin.get();
+    listener->drawLoop();
     
     return 0;
 }

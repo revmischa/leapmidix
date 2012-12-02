@@ -26,6 +26,9 @@ namespace LeapMIDIX {
         // clean up GL
         void terminate();
         
+        // run forever, drawing frames
+        void drawLoop();
+        
         // TODO: fill this in
         void drawTools(const std::map<LeapMIDI::MIDITool::ToolDescription, LeapMIDI::MIDIToolPtr>&) { }
     };

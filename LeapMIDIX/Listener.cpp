@@ -67,4 +67,8 @@ namespace LeapMIDIX {
         
         //MIDIToolController::instance().process_frame(frame);
     }
+    
+    void Listener::drawLoop() {
+        viz->drawLoop();
+    }
 }

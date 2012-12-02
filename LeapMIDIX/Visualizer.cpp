@@ -45,6 +45,16 @@ namespace LeapMIDIX {
         return 0;
     }
     
+    void Visualizer::drawLoop() {
+        do {
+            glClear( GL_COLOR_BUFFER_BIT );
+            
+            // Swap buffers
+            glfwSwapBuffers();
+        } while(glfwGetWindowParam( GLFW_OPENED ));
+        // run forever until window is closed
+    }
+    
     void Visualizer::terminate() {
         glfwTerminate();
     }

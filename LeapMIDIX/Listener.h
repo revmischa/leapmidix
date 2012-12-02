@@ -20,7 +20,12 @@ namespace LeapMIDIX {
     public:
         void init();
         virtual ~Listener();
+        
+        // callback for each leap device frame
         virtual void onFrame(const Leap::Controller&);
+        
+        // run forever, drawing frames
+        void drawLoop();
         
     protected:
         Device *device;
