@@ -60,7 +60,7 @@ namespace LeapMIDIX {
              it != LeapMIDI::MIDIToolController::instance().tools().end(); ++it) {
             
             if (it->second->active())
-                device->write(it->second->channel(), it->second->value());
+                device->write(it->second->control(), it->second->value());
         }
         
         viz->drawTools(LeapMIDI::MIDIToolController::instance().tools());
