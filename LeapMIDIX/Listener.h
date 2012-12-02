@@ -22,12 +22,21 @@ namespace LeapMIDIX {
         virtual ~Listener();
         
         // callback for each leap device frame
-        virtual void onFrame(const Leap::Controller&);
+        void onFrame(const Leap::Controller&);
+        // leap device status callbacks
+        void onConnected();
+        void onDisconnected();
+        void onInit();
         
         // run forever, drawing frames
         void drawLoop();
         
+        short isLeapDeviceConnected();
+        short isLeapDeviceInitialized();
+        
     protected:
+        short leapDeviceInitialized;
+        short leapDeviceConnected;
         Device *device;
         Visualizer *viz;
     };

@@ -5,13 +5,14 @@
 //  Copyright (c) 2012 DBA int80. All rights reserved.
 //
 
+// LeapMIDIX::Device represents a virtual MIDI source device
+// This emits MIDI control messages
+
 #ifndef __LeapMIDIX__LeapMIDIXDevice__
 #define __LeapMIDIX__LeapMIDIXDevice__
 
 #include <iostream>
 #include <CoreMIDI/CoreMIDI.h>
-//#include <GL/glew.h>
-#include <glfw.h>
 #include "LeapMIDI.h"
 
 namespace LeapMIDIX {
@@ -20,12 +21,15 @@ namespace LeapMIDIX {
         Device();
         ~Device();
         void init();
+                
+        // send a control message
+        void writeControl(unsigned char control, unsigned char value);
         
-        void initPacketList();
-        void write(unsigned char channel, unsigned char value);
+        // send midi packets
         OSStatus send(const MIDIPacketList *pktlist);
         
     protected:
+        void initPacketList();
         void createDevice();
         MIDIClientRef deviceClient;
         MIDIEndpointRef deviceEndpoint;

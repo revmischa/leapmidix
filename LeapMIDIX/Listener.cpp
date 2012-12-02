@@ -31,6 +31,22 @@ namespace LeapMIDIX {
         delete viz;
     }
     
+    void Listener::onConnected() {
+        leapDeviceConnected = 1;
+    }
+    void Listener::onDisconnected() {
+        leapDeviceConnected = 0;
+    }
+    void Listener::onInit() {
+        leapDeviceInitialized = 1;
+    }
+    short Listener::isLeapDeviceInitialized() {
+        return leapDeviceInitialized;
+    }
+    short Listener::isLeapDeviceConnected() {
+        return leapDeviceConnected;
+    }
+    
     void Listener::onFrame(const Leap::Controller& controller) {
         // this is where the magic happens
         
@@ -60,7 +76,7 @@ namespace LeapMIDIX {
              it != LeapMIDI::MIDIToolController::instance().tools().end(); ++it) {
             
             if (it->second->active())
-                device->write(it->second->control(), it->second->value());
+                device->writeControl(it->second->control(), it->second->value());
         }
         
         viz->drawTools(LeapMIDI::MIDIToolController::instance().tools());

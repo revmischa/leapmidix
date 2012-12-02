@@ -73,7 +73,7 @@ namespace LeapMIDIX {
     
     // control = MIDI control #, 0-119
     // value = MIDI control message value, 0-127
-    void Device::write(unsigned char control, unsigned char value) {
+    void Device::writeControl(unsigned char control, unsigned char value) {
         assert(control < 120);
         assert(value <= 127);
         
