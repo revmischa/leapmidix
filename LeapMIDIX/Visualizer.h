@@ -21,19 +21,29 @@ namespace LeapMIDIX {
 
     class VerticalBar {
     public:
-        VerticalBar(int origin_x, int origin_y);
+        VerticalBar(int originX, int originY, unsigned char initialMIDIValue,
+            int initialLeapValue);
         
         void draw();
         
+        void setCurrentMidiValue(unsigned char v) { currentMIDIValue_ = v; }
+        void SetCurrentLeapValue(int v) { currentLeapValue_ = v; }
+        
     private:
-        int absolute_min_;
-        int absolute_max_;
+        int originX_;
+        int originY_;
         
-        int user_set_min_;
-        int user_set_max_;
+        int absoluteMin_;
+        int absoluteMax_;
         
-        int current_value_;
+        int userDefinedMin_;
+        int userDefinedMax_;
+        
+        int currentLeapValue_;
+        unsigned char currentMIDIValue_;
     };
+    
+    typedef std::shared_ptr<VerticalBar> VerticalBarPtr;
     
     class Visualizer {
     public:
@@ -49,12 +59,12 @@ namespace LeapMIDIX {
         // run forever, drawing frames
         void drawLoop();
         
-        // TODO: fill this in
-        void drawTools(const std::map<LeapMIDI::MIDITool::ToolDescription, LeapMIDI::MIDIToolPtr>&) { }
+        void drawTools(const std::map<LeapMIDI::MIDITool::ToolDescription, LeapMIDI::MIDIToolPtr>&);
         
     private:
+        std::map<LeapMIDI::MIDIToolPtr, VerticalBarPtr> toolBarMap_;
 
-        LeapMIDIX::Listener *listener;        
+        LeapMIDIX::Listener *listener;
     };
 }
 
