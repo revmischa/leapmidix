@@ -13,7 +13,7 @@
 #include "MIDITool.h"
 #include "LeapMIDI.h"
 #include "Visualizer.h"
-#include "MIDIXDevice.h"
+#include "Device.h"
 
 namespace LeapMIDIX {
     class Listener : public LeapMIDI::Listener {

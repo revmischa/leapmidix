@@ -34,7 +34,7 @@
 		C3882474166AB45D007FE3B3 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3882472166AB44F007FE3B3 /* ApplicationServices.framework */; };
 		C3882475166AB470007FE3B3 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3882466166AB1FD007FE3B3 /* AppKit.framework */; };
 		C3F81439166A08170039AB7E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3F81438166A08170039AB7E /* main.cpp */; };
-		C3F81443166A08780039AB7E /* MIDIDevice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3F81441166A08780039AB7E /* MIDIDevice.cpp */; };
+		C3F81443166A08780039AB7E /* Device.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3F81441166A08780039AB7E /* Device.cpp */; };
 		C3F81445166A08A10039AB7E /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3F81444166A08A10039AB7E /* CoreMIDI.framework */; };
 		C3F81492166AC56E0039AB7E /* Listener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3F81490166AC56E0039AB7E /* Listener.cpp */; };
 		C3F81493166AC56E0039AB7E /* Listener.h in Headers */ = {isa = PBXBuildFile; fileRef = C3F81491166AC56E0039AB7E /* Listener.h */; };
@@ -337,8 +337,8 @@
 		C3882472166AB44F007FE3B3 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
 		C3F81434166A08170039AB7E /* LeapMIDIX */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LeapMIDIX; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3F81438166A08170039AB7E /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		C3F81441166A08780039AB7E /* MIDIDevice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MIDIDevice.cpp; sourceTree = "<group>"; };
-		C3F81442166A08780039AB7E /* MIDIXDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIDIXDevice.h; sourceTree = "<group>"; };
+		C3F81441166A08780039AB7E /* Device.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Device.cpp; sourceTree = "<group>"; };
+		C3F81442166A08780039AB7E /* Device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Device.h; sourceTree = "<group>"; };
 		C3F81444166A08A10039AB7E /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
 		C3F81446166A08B50039AB7E /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		C3F81490166AC56E0039AB7E /* Listener.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Listener.cpp; sourceTree = "<group>"; };
@@ -741,10 +741,10 @@
 			isa = PBXGroup;
 			children = (
 				C31EE662166AA38500933583 /* leapmidi.xcodeproj */,
-				C3F81441166A08780039AB7E /* MIDIDevice.cpp */,
+				C3F81441166A08780039AB7E /* Device.cpp */,
+				C3F81442166A08780039AB7E /* Device.h */,
 				C3F81490166AC56E0039AB7E /* Listener.cpp */,
 				C3F81491166AC56E0039AB7E /* Listener.h */,
-				C3F81442166A08780039AB7E /* MIDIXDevice.h */,
 				C3F81438166A08170039AB7E /* main.cpp */,
 				C35C783C166AAD2F00557211 /* Visualizer.cpp */,
 				C35C783D166AAD2F00557211 /* Visualizer.h */,
@@ -859,7 +859,7 @@
 				C388245E166AB185007FE3B3 /* vboindexer.cpp in Sources */,
 				C388245F166AB185007FE3B3 /* Visualizer.cpp in Sources */,
 				C3F81439166A08170039AB7E /* main.cpp in Sources */,
-				C3F81443166A08780039AB7E /* MIDIDevice.cpp in Sources */,
+				C3F81443166A08780039AB7E /* Device.cpp in Sources */,
 				C3F81492166AC56E0039AB7E /* Listener.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

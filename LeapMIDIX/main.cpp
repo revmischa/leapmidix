@@ -18,9 +18,12 @@ using namespace LeapMIDIX;
 void sendNote();
 
 int main(int argc, const char * argv[]) {
+    // start listening for events
     Listener *listener = new Listener();
     listener->init();
+    Leap::Controller controller(listener);
     
+    // run forever
     std::cin.get();
     
     return 0;

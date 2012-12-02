@@ -19,7 +19,7 @@ namespace LeapMIDIX {
         
         // create virtual midi source
         device = new Device();
-        //    device->init();
+        device->init();
         
         // initialize visualizer
         viz = new Visualizer();
@@ -37,20 +37,21 @@ namespace LeapMIDIX {
         // get most recent frame
         Leap::Frame frame = controller.frame();
         
+        if (frame.hands().empty())
+            return;
+        
+        Leap::Hand hand = frame.hands()[0];
+        if (hand.fingers().empty())
+            return;
+        
+        Leap::Finger finger = hand.fingers()[0];
+        unsigned int value = finger.tip().position.y;
+        if (value > 127) value = 127; // TODO: map into range
+        device->write(0, value);
+        return;
+        
         LeapMIDI::MIDIToolController::instance().process_frame(frame);
         
-//        LeapMIDI::MIDIToolController::instance().
-        
-        //std::map<int, LeapMIDI::MIDIToolPtr> m;
-        //m = LeapMIDI::MIDIToolController::instance().tool_map_;
-
-        /*
-        for (std::map<LeapMIDI::MIDITool::ToolDescription, LeapMIDI::MIDIToolPtr>::const_iterator it = LeapMIDI::MIDIToolController::instance().tool_map_.begin();
-             it != LeapMIDI::MIDIToolController::instance().tool_map_.end(); ++it) {
-            
-            device->write(it->second.channel(), it->second.value());
-        }
-         */
         
         
         // write all the values to the midi divice

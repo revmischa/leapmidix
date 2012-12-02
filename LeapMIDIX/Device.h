@@ -22,9 +22,8 @@ namespace LeapMIDIX {
         ~Device();
         void init();
         
-        // TODO implement this
-        void write(int channel, int value) { }
-        
+        void initPacketList();
+        void write(unsigned char channel, unsigned char value);
         OSStatus send(const MIDIPacketList *pktlist);
         
     protected:
@@ -32,6 +31,9 @@ namespace LeapMIDIX {
         MIDIClientRef deviceClient;
         MIDIEndpointRef deviceEndpoint;
         MIDIPortRef deviceOutputPort;
+        MIDIPacketList *midiPacketList;
+        unsigned int packetListSize;
+        MIDIPacket *curPacket;
     };
 }
 
