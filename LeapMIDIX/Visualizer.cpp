@@ -86,9 +86,6 @@ namespace LeapMIDIX {
             
             glClearColor(listener->isLeapDeviceConnected() ? 0 : 1, 0, 0, 0);
             
-            glLoadIdentity();
-            gluLookAt(0.f, 0.f, -5.f, 0.f, 0.f, 0.f, 0.f, 1.f, 0.f);
-            
             glEnable(GL_BLEND);
             glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
             
@@ -96,41 +93,58 @@ namespace LeapMIDIX {
                 toolBarMap_.begin(); it != toolBarMap_.end(); ++it) {
                 it->second->draw();
             }
+            
+            //glClearColor(0.0, 0.0, 0.0, 0.0);  //Set the cleared screen colour to black
+            glViewport(0, 0, 1024, 768);   //This sets up the viewport so that the coordinates (0, 0) are at the top left of the window
+            
+            //Set up the orthographic projection so that coordinates (0, 0) are in the top left
+            //and the minimum and maximum depth is -10 and 10. To enable depth just put in
+            //glEnable(GL_DEPTH_TEST)
+            
+            glMatrixMode(GL_PROJECTION);
+            
+            glLoadIdentity();
+            
+            gluOrtho2D(0.0, 1024, 768.0, 0.0);
+            
+            //glOrtho(0, 1024, 768, 0, -10, 10);
+            
+            
+            /*
             // reset view matrix
             glLoadIdentity();
             // move view back a bit
             glTranslatef(0, 0, -30);
             // apply the current rotation
-            glRotatef(0, 0, 1, 0);
-            glRotatef(0, 0, 0, 1);
+            //glRotatef(0, 0, 1, 0);
+            //glRotatef(0, 0, 0, 1);
             // by repeatedly rotating the view matrix during drawing, the
             // squares end up in a circle
             int i = 0, squares = 15;
             float green = 0.6;
             float red = 0, blue = 1;
-            for (; i < squares; ++i){
+            for (; i < squares; ++i) {
                 glRotatef(360.0/squares, 0, 0, 1);
                 // colors change for each square
                 red += 1.0/12;
                 blue -= 1.0/12;
             
-            
-            // Draws a square with a gradient color at coordinates 0, 10
-            glBegin(GL_QUADS);
-            {
-                glColor3f(red, green, blue);
-                glVertex2i(1, 11);
-                glColor3f(red * .8, green * .8, blue * .8);
-                glVertex2i(-1, 11);
-                glColor3f(red * .5, green * .5, blue * .5);
-                glVertex2i(-1, 9);
-                glColor3f(red * .8, green * .8, blue * .8);
-                glVertex2i(1, 9);
+                // Draws a square with a gradient color at coordinates 0, 10
+                glBegin(GL_QUADS);
+                {
+                    glColor3f(red, green, blue);
+                    glVertex2i(1, 11);
+                    glColor3f(red * .8, green * .8, blue * .8);
+                    glVertex2i(-1, 11);
+                    glColor3f(red * .5, green * .5, blue * .5);
+                    glVertex2i(-1, 9);
+                    glColor3f(red * .8, green * .8, blue * .8);
+                    glVertex2i(1, 9);
+                }
+                glEnd();
+             
             }
-                
-            glEnd();
-                
-            }
+             */
             
             glColor3f(255.0, 1.0, 1.0);
             glBegin(GL_LINE);

@@ -81,7 +81,6 @@ namespace LeapMIDIX {
         if (value > 127) value = 127; // TODO: map into range
         device->write(0, value);
         return;
-        
         */
          
         LeapMIDI::MIDIToolController::instance().process_frame(frame);
