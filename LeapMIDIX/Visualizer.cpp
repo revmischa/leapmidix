@@ -89,10 +89,12 @@ namespace LeapMIDIX {
             glEnable(GL_BLEND);
             glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
             
+            /*
             for (std::map<LeapMIDI::MIDIToolPtr, VerticalBarPtr>::iterator it =
                 toolBarMap_.begin(); it != toolBarMap_.end(); ++it) {
                 it->second->draw();
             }
+             */
             
             //glClearColor(0.0, 0.0, 0.0, 0.0);  //Set the cleared screen colour to black
             glViewport(0, 0, 1024, 768);   //This sets up the viewport so that the coordinates (0, 0) are at the top left of the window
@@ -162,7 +164,8 @@ namespace LeapMIDIX {
         glfwTerminate();
     }
     
-    void Visualizer::drawTools(const std::map<LeapMIDIControl,
+    /*
+    void Visualizer::drawTools(const std::map<LeapMIDI::MIDITool::ToolDescription,
         LeapMIDI::MIDIToolPtr>& tools) {
         for (std::map<LeapMIDIControl,
              LeapMIDI::MIDIToolPtr>::const_iterator it = tools.begin(); it !=
@@ -178,4 +181,5 @@ namespace LeapMIDIX {
             toolBarMap_[it->second]->SetCurrentLeapValue(it->second->leapValue());
         }
     }
+     */
 }

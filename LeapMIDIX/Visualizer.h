@@ -12,7 +12,6 @@
 #include <iostream>
 #include <map>
 
-#include "MIDITool.h"
 #include "Listener.h"
 
 namespace LeapMIDIX {
@@ -59,10 +58,10 @@ namespace LeapMIDIX {
         // run forever, drawing frames
         void drawLoop();
         
-        void drawTools(const std::map<LeapMIDIControl, LeapMIDI::MIDIToolPtr>&);
+//        void drawTools(const std::map<LeapMIDI::MIDITool::ToolDescription, LeapMIDI::MIDIToolPtr>&);
         
     private:
-        std::map<LeapMIDI::MIDIToolPtr, VerticalBarPtr> toolBarMap_;
+//        std::map<LeapMIDI::MIDIToolPtr, VerticalBarPtr> toolBarMap_;
 
         LeapMIDIX::Listener *listener;
     };

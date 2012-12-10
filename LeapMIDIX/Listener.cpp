@@ -9,8 +9,6 @@
 #include <memory>
 #include <map>
 
-#include "MIDITool.h"
-
 #include "Listener.h"
 
 namespace LeapMIDIX {
@@ -61,58 +59,25 @@ namespace LeapMIDIX {
     short Listener::isLeapDeviceConnected() {
         return leapDeviceConnected;
     }
+    void Listener::onGestureRecognized(const Leap::Controller &controller, LeapMIDI::Gesture::Base &gesture) {
+        LeapMIDI::Listener::onGestureRecognized(controller, gesture);
+    }
     
-    void Listener::onFrame(const Leap::Controller& controller) {
-        // this is where the magic happens
+    void Listener::onControlUpdated(const Leap::Controller &controller, LeapMIDI::Gesture::Base &gesture, LeapMIDI::Control::Base &control) {
+        // call superclass method
+        LeapMIDI::Listener::onControlUpdated(controller, gesture, control);
         
-        // get most recent frame
-        Leap::Frame frame = controller.frame();
+        // draw gesture and control output
+        // ...
         
-        if (frame.hands().empty())
-            return;
+        // control
+        LeapMIDI::midi_control_index controlIndex = control.controlIndex();
+        // control value
+        LeapMIDI::midi_control_value val = control.mappedValue();
+        
+        device->addControlMessage(controlIndex, val);
+    }
 
-        processFrameRaw(frame);
-//        processFrameTools(frame);
-    }
-    
-    // really simple finger->midi control processing, useful for testing and demoing
-    void Listener::processFrameRaw(const Leap::Frame &frame) {        
-        Leap::Hand hand = frame.hands()[0];
-        unsigned int fingerCount = (unsigned int)hand.fingers().size();
-
-        if (! fingerCount)
-            return;
-        
-        unsigned int value = 0;
-        
-        // average finger Y coords
-        for (int i = 0; i < fingerCount; i++) {
-            value += hand.fingers()[i].tip().position.y;
-        }
-        value /= fingerCount;
-        
-        value -= 30; // min Y value
-        if (value > 127) value = 127; // TODO: map into range
-        device->writeControl(fingerCount, value);
-    }
-    
-    // fancy processing of frames to generate abstract tools
-    void Listener::processFrameTools(const Leap::Frame &frame) {
-        LeapMIDI::MIDIToolController::instance().process_frame(frame);
-        
-        // write all the values to the midi divice
-        for (std::map<LeapMIDIControl, LeapMIDI::MIDIToolPtr>::const_iterator it = LeapMIDI::MIDIToolController::instance().tools().begin();
-             it != LeapMIDI::MIDIToolController::instance().tools().end(); ++it) {
-            
-            if (it->second->active())
-                device->writeControl(it->second->control(), it->second->value());
-        }
-        
-        viz->drawTools(LeapMIDI::MIDIToolController::instance().tools());
-        
-        //MIDIToolController::instance().process_frame(frame);
-    }
-    
     void Listener::drawLoop() {
 #ifdef LMX_VISUALIZER_ENABLED
         viz->drawLoop();

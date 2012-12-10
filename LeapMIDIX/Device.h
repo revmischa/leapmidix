@@ -12,29 +12,52 @@
 #define __LeapMIDIX__LeapMIDIXDevice__
 
 #include <iostream>
+#include <queue>
+#include <pthread.h>
+#include <sys/time.h>
 #include <CoreMIDI/CoreMIDI.h>
+#include "MIDITypes.h"
 
 namespace LeapMIDIX {
+    typedef struct {
+        LeapMIDI::midi_control_index control_index;
+        LeapMIDI::midi_control_value control_value;
+    } midi_message;
+    
     class Device {
     public:
         Device();
-        ~Device();
-        void init();
+        virtual ~Device();
+        virtual void init();
+        
+        virtual void addControlMessage(LeapMIDI::midi_control_index controlIndex, LeapMIDI::midi_control_value controlValue);
                 
+    protected:
+        virtual void initPacketList();
+        virtual void createDevice();
+        
+        // thread-safe MIDI message queue
+        virtual void *messageSendingThreadEntry();
+        std::queue<midi_message> midiMessageQueue;
+        pthread_mutex_t messageQueueMutex;
+        pthread_t messageQueueThread;
+        pthread_cond_t messageQueueCond;
+        
         // send a control message
-        void writeControl(unsigned char control, unsigned char value);
+        virtual void writeControl(LeapMIDI::midi_control_index control, LeapMIDI::midi_control_value value);
         
         // send midi packets
-        OSStatus send(const MIDIPacketList *pktlist);
+        virtual OSStatus send(const MIDIPacketList *pktlist);
         
-    protected:
-        void initPacketList();
-        void createDevice();
         MIDIClientRef deviceClient;
         MIDIEndpointRef deviceEndpoint;
         MIDIPacketList *midiPacketList;
         unsigned int packetListSize;
         MIDIPacket *curPacket;
+        
+    private:
+        static void *_messageSendingThreadEntry(void * This) {((Device *)This)->messageSendingThreadEntry(); return NULL;}
+
     };
 }
 
