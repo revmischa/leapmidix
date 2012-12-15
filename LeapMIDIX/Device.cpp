@@ -81,7 +81,6 @@ namespace LeapMIDIX {
         
         // reinitialize packet list, MIDIReceived does not appear to flush the list
         // none of this is really documented but this seems to work ok
-        // FIXME: probably not thread-safe, if a frame callback is called while this is happening
         initPacketList();
 
         return res;
