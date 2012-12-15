@@ -44,12 +44,12 @@ namespace LeapMIDIX {
         pthread_t messageQueueThread;
         pthread_cond_t messageQueueCond;
         
-        // send control messages
-        virtual void writeControlMessages(std::queue<midi_message> &messages);
-        virtual void writeControl(LeapMIDI::midi_control_index control, LeapMIDI::midi_control_value value);
+        // add MIDI control messages to the MIDI packet queue to transmit
+        virtual void queueControlMessages(std::queue<midi_message> &messages);
+        virtual void queueControlPacket(LeapMIDI::midi_control_index control, LeapMIDI::midi_control_value value);
         
         // send midi packets
-        virtual OSStatus send(const MIDIPacketList *pktlist);
+        virtual OSStatus sendMIDIQueue();
         
         MIDIClientRef deviceClient;
         MIDIEndpointRef deviceEndpoint;

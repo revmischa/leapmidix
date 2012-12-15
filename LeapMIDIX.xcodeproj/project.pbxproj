@@ -8,9 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		C31B003C1675A5A100383230 /* libLeap.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C31B003B1675A5A100383230 /* libLeap.dylib */; };
+		C3249770167D3B120093F7B8 /* leapmidi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C3249767167D3A100093F7B8 /* leapmidi.a */; };
+		C3249773167D3B730093F7B8 /* libLeap.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = C31B003B1675A5A100383230 /* libLeap.dylib */; };
 		C33FF061166AAECE006BFE81 /* libGLEW.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C33FF057166AAECE006BFE81 /* libGLEW.a */; };
 		C33FF062166AAECE006BFE81 /* libglfw.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C33FF058166AAECE006BFE81 /* libglfw.a */; };
-		C35C754A166AA3B400557211 /* leapmidi.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C31EE668166AA38500933583 /* leapmidi.dylib */; };
 		C3882434166AAFB5007FE3B3 /* controls.hpp in Headers */ = {isa = PBXBuildFile; fileRef = C33FEF5E166AAECD006BFE81 /* controls.hpp */; settings = {ATTRIBUTES = (); }; };
 		C3882435166AAFB5007FE3B3 /* objloader.hpp in Headers */ = {isa = PBXBuildFile; fileRef = C33FEF60166AAECD006BFE81 /* objloader.hpp */; settings = {ATTRIBUTES = (); }; };
 		C3882436166AAFB5007FE3B3 /* shader.hpp in Headers */ = {isa = PBXBuildFile; fileRef = C33FEF62166AAECD006BFE81 /* shader.hpp */; settings = {ATTRIBUTES = (); }; };
@@ -42,23 +43,23 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		C31EE667166AA38500933583 /* PBXContainerItemProxy */ = {
+		C3249766167D3A100093F7B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = C31EE662166AA38500933583 /* leapmidi.xcodeproj */;
+			containerPortal = C324975D167D3A100093F7B8 /* leapmidi.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = C33EF2AF16672833001D3D0E;
 			remoteInfo = leapmidi;
 		};
-		C31EE669166AA38500933583 /* PBXContainerItemProxy */ = {
+		C3249768167D3A100093F7B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = C31EE662166AA38500933583 /* leapmidi.xcodeproj */;
+			containerPortal = C324975D167D3A100093F7B8 /* leapmidi.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = C33EF32216673D10001D3D0E;
 			remoteInfo = leapmidi_test;
 		};
-		C35C7548166AA3AE00557211 /* PBXContainerItemProxy */ = {
+		C324976E167D3AEA0093F7B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = C31EE662166AA38500933583 /* leapmidi.xcodeproj */;
+			containerPortal = C324975D167D3A100093F7B8 /* leapmidi.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = C33EF2AE16672833001D3D0E;
 			remoteInfo = leapmidi;
@@ -69,9 +70,10 @@
 		C3F81432166A08170039AB7E /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 12;
-			dstPath = usr/share/man/man1;
-			dstSubfolderSpec = 0;
+			dstPath = "";
+			dstSubfolderSpec = 16;
 			files = (
+				C3249773167D3B730093F7B8 /* libLeap.dylib in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,7 +81,7 @@
 
 /* Begin PBXFileReference section */
 		C31B003B1675A5A100383230 /* libLeap.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libLeap.dylib; path = ../../../../Leap_SDK/lib/libLeap.dylib; sourceTree = "<group>"; };
-		C31EE662166AA38500933583 /* leapmidi.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = leapmidi.xcodeproj; path = ../../leapmidi/leapmidi.xcodeproj; sourceTree = "<group>"; };
+		C324975D167D3A100093F7B8 /* leapmidi.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = leapmidi.xcodeproj; path = ../leapmidi/leapmidi.xcodeproj; sourceTree = "<group>"; };
 		C33FEF5D166AAECD006BFE81 /* controls.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = controls.cpp; sourceTree = "<group>"; };
 		C33FEF5E166AAECD006BFE81 /* controls.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = controls.hpp; sourceTree = "<group>"; };
 		C33FEF5F166AAECD006BFE81 /* objloader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = objloader.cpp; sourceTree = "<group>"; };
@@ -351,11 +353,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3249770167D3B120093F7B8 /* leapmidi.a in Frameworks */,
 				C3882475166AB470007FE3B3 /* AppKit.framework in Frameworks */,
 				C3882474166AB45D007FE3B3 /* ApplicationServices.framework in Frameworks */,
 				C3882469166AB20E007FE3B3 /* IOKit.framework in Frameworks */,
 				C3882461166AB1CE007FE3B3 /* OpenGL.framework in Frameworks */,
-				C35C754A166AA3B400557211 /* leapmidi.dylib in Frameworks */,
 				C3F81445166A08A10039AB7E /* CoreMIDI.framework in Frameworks */,
 				C33FF061166AAECE006BFE81 /* libGLEW.a in Frameworks */,
 				C33FF062166AAECE006BFE81 /* libglfw.a in Frameworks */,
@@ -366,11 +368,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C31EE663166AA38500933583 /* Products */ = {
+		C324975E167D3A100093F7B8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C31EE668166AA38500933583 /* leapmidi.dylib */,
-				C31EE66A166AA38500933583 /* leapmidi_test */,
+				C3249767167D3A100093F7B8 /* leapmidi.a */,
+				C3249769167D3A100093F7B8 /* leapmidi_test */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -722,6 +724,7 @@
 		C3F81429166A08170039AB7E = {
 			isa = PBXGroup;
 			children = (
+				C324975D167D3A100093F7B8 /* leapmidi.xcodeproj */,
 				C33FEF5B166AAECD006BFE81 /* contrib */,
 				C3882476166AB48E007FE3B3 /* Frameworks */,
 				C3F81437166A08170039AB7E /* LeapMIDIX */,
@@ -740,7 +743,6 @@
 		C3F81437166A08170039AB7E /* LeapMIDIX */ = {
 			isa = PBXGroup;
 			children = (
-				C31EE662166AA38500933583 /* leapmidi.xcodeproj */,
 				C3F81441166A08780039AB7E /* Device.cpp */,
 				C3F81442166A08780039AB7E /* Device.h */,
 				C3F81490166AC56E0039AB7E /* Listener.cpp */,
@@ -789,7 +791,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				C35C7549166AA3AE00557211 /* PBXTargetDependency */,
+				C324976F167D3AEA0093F7B8 /* PBXTargetDependency */,
 			);
 			name = LeapMIDIX;
 			productName = LeapMIDIX;
@@ -817,8 +819,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = C31EE663166AA38500933583 /* Products */;
-					ProjectRef = C31EE662166AA38500933583 /* leapmidi.xcodeproj */;
+					ProductGroup = C324975E167D3A100093F7B8 /* Products */;
+					ProjectRef = C324975D167D3A100093F7B8 /* leapmidi.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -829,18 +831,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		C31EE668166AA38500933583 /* leapmidi.dylib */ = {
+		C3249767167D3A100093F7B8 /* leapmidi.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.dylib";
-			path = leapmidi.dylib;
-			remoteRef = C31EE667166AA38500933583 /* PBXContainerItemProxy */;
+			path = leapmidi.a;
+			remoteRef = C3249766167D3A100093F7B8 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		C31EE66A166AA38500933583 /* leapmidi_test */ = {
+		C3249769167D3A100093F7B8 /* leapmidi_test */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.executable";
 			path = leapmidi_test;
-			remoteRef = C31EE669166AA38500933583 /* PBXContainerItemProxy */;
+			remoteRef = C3249768167D3A100093F7B8 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -867,10 +869,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		C35C7549166AA3AE00557211 /* PBXTargetDependency */ = {
+		C324976F167D3AEA0093F7B8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = leapmidi;
-			targetProxy = C35C7548166AA3AE00557211 /* PBXContainerItemProxy */;
+			targetProxy = C324976E167D3AEA0093F7B8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
