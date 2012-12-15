@@ -169,6 +169,8 @@ namespace LeapMIDIX {
                 std::cerr << "message queue mutex unlock failure\n";
                 exit(1);
             }
+            
+            writeControlMessages(queueCopy);
         }
         
         return NULL;
@@ -185,7 +187,7 @@ namespace LeapMIDIX {
             gettimeofday(&tv, NULL);
             double elapsedTime = (tv.tv_sec - msg.timestamp.tv_sec) * 1000.0;      // sec to ms
             elapsedTime += (tv.tv_usec - msg.timestamp.tv_usec) / 1000.0;   // us to ms
-            if (elapsedTime > 1) {
+            if (elapsedTime > 2) {
                 std::cerr << "Warning, MIDI control message latency of " << elapsedTime << "ms detected.\n";
                 continue;
             }
