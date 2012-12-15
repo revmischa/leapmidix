@@ -116,7 +116,8 @@ namespace LeapMIDIX {
             exit(1);
         }
         
-        std::cout << "Emitted channel " << (int)channel << " value: " << (int)value << std::endl;
+//        std::cout << "Emitted channel " << (int)channel << ", control: " <<
+//            (int)midiControl << ", value: " << (int)value << std::endl;
         
         // "send" packet
         this->send(midiPacketList);
