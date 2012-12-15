@@ -131,6 +131,9 @@ namespace LeapMIDIX {
         while (1) {
             pthread_testcancel();
             
+            // CHECK IF QUEUE IS EMPTY, IF NOT DON'T DO TIMEWAIT
+            // (condvar will not be broadcasted if message is added right here)
+            
             // acquire mutex once there is a message waiting for us
             gettimeofday(&tv, NULL);
             ts.tv_sec = tv.tv_sec + 2; // timeout 2s
@@ -138,7 +141,7 @@ namespace LeapMIDIX {
             int res = pthread_cond_timedwait(&messageQueueCond, &messageQueueMutex, &ts);
             if (res == ETIMEDOUT) {
                 // no message was waiting
-                // std::cout << "ETIMEDOUT\n";
+                std::cout << "ETIMEDOUT\n";
                 continue;
             }
             if (res != 0) {
@@ -152,21 +155,44 @@ namespace LeapMIDIX {
                 continue;
             }
             
-            // grab one message off the queue
-            midi_message msg = midiMessageQueue.front();
-            midiMessageQueue.pop();
+            // copy messages from shared queue into thread-local copy
+            // (is there a cleaner way to do this?)
+            std::queue<midi_message> queueCopy;
+            while (! midiMessageQueue.empty()) {
+                midi_message msg = midiMessageQueue.front();
+                queueCopy.push(msg);
+                midiMessageQueue.pop();
+            }
             
             // unlock
             if (pthread_mutex_unlock(&messageQueueMutex) != 0) {
                 std::cerr << "message queue mutex unlock failure\n";
                 exit(1);
             }
-
-            // we have data to send. i think this blocks
-            this->writeControl(msg.control_index, msg.control_value);
         }
         
         return NULL;
+    }
+    
+    void Device::writeControlMessages(std::queue<midi_message> &messages) {
+        struct timeval tv;
+
+        while (! messages.empty()) {
+            midi_message msg = messages.front();
+            messages.pop();
+            
+            // figure out when this packet was added
+            gettimeofday(&tv, NULL);
+            double elapsedTime = (tv.tv_sec - msg.timestamp.tv_sec) * 1000.0;      // sec to ms
+            elapsedTime += (tv.tv_usec - msg.timestamp.tv_usec) / 1000.0;   // us to ms
+            if (elapsedTime > 1) {
+                std::cerr << "Warning, MIDI control message latency of " << elapsedTime << "ms detected.\n";
+                continue;
+            }
+            
+            // we have data to send. i think this blocks
+            writeControl(msg.control_index, msg.control_value);
+        }
     }
     
     void Device::addControlMessage(LeapMIDI::midi_control_index controlIndex, LeapMIDI::midi_control_value controlValue) {
@@ -174,6 +200,7 @@ namespace LeapMIDIX {
         midi_message msg;
         msg.control_index = controlIndex;
         msg.control_value = controlValue;
+        gettimeofday(&msg.timestamp, NULL);
         midiMessageQueue.push(msg);
         pthread_mutex_unlock(&messageQueueMutex);
         pthread_cond_signal(&messageQueueCond);

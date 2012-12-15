@@ -22,7 +22,12 @@ int main(int argc, const char * argv[]) {
     Leap::Controller controller(listener);
     
     // run forever
-    listener->drawLoop();
+    try {
+        listener->drawLoop();
+    } catch (const std::exception &ex) {
+        std::cout << ex.what() << std::endl;
+        exit(1);
+    }
     
     return 0;
 }

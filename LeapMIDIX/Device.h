@@ -22,6 +22,7 @@ namespace LeapMIDIX {
     typedef struct {
         LeapMIDI::midi_control_index control_index;
         LeapMIDI::midi_control_value control_value;
+        timeval timestamp;
     } midi_message;
     
     class Device {
@@ -43,7 +44,8 @@ namespace LeapMIDIX {
         pthread_t messageQueueThread;
         pthread_cond_t messageQueueCond;
         
-        // send a control message
+        // send control messages
+        virtual void writeControlMessages(std::queue<midi_message> &messages);
         virtual void writeControl(LeapMIDI::midi_control_index control, LeapMIDI::midi_control_value value);
         
         // send midi packets
