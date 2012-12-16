@@ -35,6 +35,12 @@
 		C3882469166AB20E007FE3B3 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3882468166AB20E007FE3B3 /* IOKit.framework */; };
 		C3882474166AB45D007FE3B3 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3882472166AB44F007FE3B3 /* ApplicationServices.framework */; };
 		C3882475166AB470007FE3B3 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3882466166AB1FD007FE3B3 /* AppKit.framework */; };
+		C3B746BF167D70F1004524D9 /* MIDITypes.h in Headers */ = {isa = PBXBuildFile; fileRef = C3B746BE167D70F1004524D9 /* MIDITypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C3B746C1167D7109004524D9 /* Leap.h in Headers */ = {isa = PBXBuildFile; fileRef = C3B746C0167D7109004524D9 /* Leap.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C3B746C3167D7122004524D9 /* LeapMIDI.h in Headers */ = {isa = PBXBuildFile; fileRef = C3B746C2167D7122004524D9 /* LeapMIDI.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C3B746C5167D712D004524D9 /* MIDIGestureBase.h in Headers */ = {isa = PBXBuildFile; fileRef = C3B746C4167D712D004524D9 /* MIDIGestureBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C3B746C7167D7131004524D9 /* MIDIGestureBall.h in Headers */ = {isa = PBXBuildFile; fileRef = C3B746C6167D7131004524D9 /* MIDIGestureBall.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C3B746C9167D7134004524D9 /* MIDIGestureFinger.h in Headers */ = {isa = PBXBuildFile; fileRef = C3B746C8167D7134004524D9 /* MIDIGestureFinger.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C3F81439166A08170039AB7E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3F81438166A08170039AB7E /* main.cpp */; };
 		C3F81443166A08780039AB7E /* Device.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3F81441166A08780039AB7E /* Device.cpp */; };
 		C3F81445166A08A10039AB7E /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3F81444166A08A10039AB7E /* CoreMIDI.framework */; };
@@ -338,6 +344,12 @@
 		C388246E166AB43B007FE3B3 /* libSystem.B.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libSystem.B.dylib; path = usr/lib/libSystem.B.dylib; sourceTree = SDKROOT; };
 		C3882470166AB449007FE3B3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C3882472166AB44F007FE3B3 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
+		C3B746BE167D70F1004524D9 /* MIDITypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file; name = MIDITypes.h; path = ../leapmidi/leapmidi/MIDITypes.h; sourceTree = "<group>"; };
+		C3B746C0167D7109004524D9 /* Leap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file; name = Leap.h; path = ../leapmidi/contrib/Leap.h; sourceTree = "<group>"; };
+		C3B746C2167D7122004524D9 /* LeapMIDI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file; name = LeapMIDI.h; path = ../leapmidi/leapmidi/LeapMIDI.h; sourceTree = "<group>"; };
+		C3B746C4167D712D004524D9 /* MIDIGestureBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file; name = MIDIGestureBase.h; path = ../leapmidi/leapmidi/MIDIGestureBase.h; sourceTree = "<group>"; };
+		C3B746C6167D7131004524D9 /* MIDIGestureBall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file; name = MIDIGestureBall.h; path = ../leapmidi/leapmidi/MIDIGestureBall.h; sourceTree = "<group>"; };
+		C3B746C8167D7134004524D9 /* MIDIGestureFinger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file; name = MIDIGestureFinger.h; path = ../leapmidi/leapmidi/MIDIGestureFinger.h; sourceTree = "<group>"; };
 		C3F81434166A08170039AB7E /* LeapMIDIX */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LeapMIDIX; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3F81438166A08170039AB7E /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		C3F81441166A08780039AB7E /* Device.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Device.cpp; sourceTree = "<group>"; };
@@ -724,6 +736,12 @@
 		C3F81429166A08170039AB7E = {
 			isa = PBXGroup;
 			children = (
+				C3B746C8167D7134004524D9 /* MIDIGestureFinger.h */,
+				C3B746C6167D7131004524D9 /* MIDIGestureBall.h */,
+				C3B746C4167D712D004524D9 /* MIDIGestureBase.h */,
+				C3B746C2167D7122004524D9 /* LeapMIDI.h */,
+				C3B746C0167D7109004524D9 /* Leap.h */,
+				C3B746BE167D70F1004524D9 /* MIDITypes.h */,
 				C324975D167D3A100093F7B8 /* leapmidi.xcodeproj */,
 				C33FEF5B166AAECD006BFE81 /* contrib */,
 				C3882476166AB48E007FE3B3 /* Frameworks */,
@@ -761,6 +779,12 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3B746BF167D70F1004524D9 /* MIDITypes.h in Headers */,
+				C3B746C1167D7109004524D9 /* Leap.h in Headers */,
+				C3B746C3167D7122004524D9 /* LeapMIDI.h in Headers */,
+				C3B746C5167D712D004524D9 /* MIDIGestureBase.h in Headers */,
+				C3B746C9167D7134004524D9 /* MIDIGestureFinger.h in Headers */,
+				C3B746C7167D7131004524D9 /* MIDIGestureBall.h in Headers */,
 				C3882434166AAFB5007FE3B3 /* controls.hpp in Headers */,
 				C3882435166AAFB5007FE3B3 /* objloader.hpp in Headers */,
 				C3882436166AAFB5007FE3B3 /* shader.hpp in Headers */,

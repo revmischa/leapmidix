@@ -25,7 +25,7 @@ int main(int argc, const char * argv[]) {
     try {
         listener->drawLoop();
     } catch (const std::exception &ex) {
-        std::cout << ex.what() << std::endl;
+        std::cerr << "Caught exception: " << ex.what() << std::endl;
         exit(1);
     }
     
