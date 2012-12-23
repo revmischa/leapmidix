@@ -17,13 +17,14 @@ void sendNote();
 
 int main(int argc, const char * argv[]) {
     // start listening for events
-    Listener *listener = new Listener();
-    listener->init();
-    Leap::Controller controller(listener);
+    Listener listener;
+    listener.init();
+    Leap::Controller controller;
+    controller.addListener(listener);
     
     // run forever
     try {
-        listener->drawLoop();
+        listener.drawLoop();
     } catch (const std::exception &ex) {
         std::cerr << "Caught exception: " << ex.what() << std::endl;
         exit(1);
