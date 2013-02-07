@@ -17,9 +17,10 @@ void sendNote();
 
 int main(int argc, const char * argv[]) {
     // start listening for events
-    Listener listener;
-    listener.init();
+    LeapMIDIX::Listener listener;
     Leap::Controller controller;
+    
+    listener.init(&controller);
     controller.addListener(listener);
     
     // run forever

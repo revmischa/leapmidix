@@ -38,9 +38,10 @@ namespace LeapMIDIX {
         this->terminate();
     }
     
-    int Visualizer::init(Listener *listener_) {
-        // save listener instance so we can interrogate it when drawing
+    int Visualizer::init(Listener *listener_, Leap::Controller *controller_) {
+        // save listener and controller instances so we can interrogate them when drawing
         listener = listener_;
+        controller = controller_;
         
         // main glfw turn on
         if(! glfwInit()) {
@@ -84,7 +85,7 @@ namespace LeapMIDIX {
             glClear( GL_COLOR_BUFFER_BIT );
             
             
-            glClearColor(listener->isLeapDeviceConnected() ? 0 : 1, 0, 0, 0);
+            glClearColor(controller->isConnected() ? 0 : 1, 0, 0, 0);
             
             glEnable(GL_BLEND);
             glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);

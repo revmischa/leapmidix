@@ -13,6 +13,7 @@
 #include <map>
 
 #include "Listener.h"
+#include "Leap.h"
 
 namespace LeapMIDIX {
 
@@ -50,7 +51,7 @@ namespace LeapMIDIX {
         
         // open window, set up glfw
         // returns true on success
-        int init(Listener *listener);
+        int init(Listener *listener_, Leap::Controller *controller_);
         
         // clean up GL
         void terminate();
@@ -64,6 +65,7 @@ namespace LeapMIDIX {
 //        std::map<LeapMIDI::MIDIToolPtr, VerticalBarPtr> toolBarMap_;
 
         LeapMIDIX::Listener *listener;
+        Leap::Controller *controller;
     };
 }
 

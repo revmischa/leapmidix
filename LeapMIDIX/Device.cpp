@@ -106,7 +106,7 @@ namespace LeapMIDIX {
     }
     
     void *Device::messageSendingThreadEntry() {
-        std::cout << "messageSendingThreadEntry\n";
+//        std::cout << "messageSendingThreadEntry\n";
         struct timeval tv;
         struct timespec ts;
 

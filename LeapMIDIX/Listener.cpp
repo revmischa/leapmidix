@@ -17,7 +17,7 @@ namespace LeapMIDIX {
         device = NULL;
     }
     
-    void Listener::init() {
+    void Listener::init(Leap::Controller *controller) {
         std::cout << "Leap MIDI device initalized" << std::endl;
         
         // create virtual midi source
@@ -39,26 +39,6 @@ namespace LeapMIDIX {
             delete device;
     }
     
-    void LeapMIDIX::Listener::onInit(const Leap::Controller& controller) {
-        std::cout << "Leap device initialized\n";
-        leapDeviceInitialized = 1;
-    }
-    
-    void LeapMIDIX::Listener::onConnect(const Leap::Controller& controller) {
-        std::cout << "Leap device connected\n";
-        leapDeviceConnected = 1;
-    }
-    
-    void LeapMIDIX::Listener::onDisconnect(const Leap::Controller& controller) {
-        std::cout << "Leap device disconnected\n";
-        leapDeviceConnected = 0;
-    }
-    short Listener::isLeapDeviceInitialized() {
-        return leapDeviceInitialized;
-    }
-    short Listener::isLeapDeviceConnected() {
-        return leapDeviceConnected;
-    }
     void Listener::onGestureRecognized(const Leap::Controller &controller, LeapMIDI::Gesture::Base &gesture) {
         LeapMIDI::Listener::onGestureRecognized(controller, gesture);
     }
