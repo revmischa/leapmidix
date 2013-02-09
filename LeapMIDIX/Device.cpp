@@ -27,16 +27,8 @@ namespace LeapMIDIX {
     }
     
     void Device::addControlMessage(LeapMIDI::midi_control_index controlIndex, LeapMIDI::midi_control_value controlValue) {
-//        int res = pthread_mutex_trylock(&messageQueueMutex);
-//        if (! res) {
-//            // success
-//            pthread_mutex_unlock(&messageQueueMutex);
-//        } else {
-//            lmx_dev_debug("unable to acquire lock\n");
-//        }
-        
         pthread_mutex_lock(&messageQueueMutex);
-//        lmx_dev_debug("main locked\n");
+        lmx_dev_debug("main locked\n");
         
         midi_message msg;
         msg.control_index = controlIndex;
@@ -44,7 +36,7 @@ namespace LeapMIDIX {
         gettimeofday(&msg.timestamp, NULL);
         midiMessageQueue.push(msg);
         pthread_mutex_unlock(&messageQueueMutex);
-//        lmx_dev_debug("main unlocked\n");
+        lmx_dev_debug("main unlocked\n");
         pthread_cond_signal(&messageQueueCond);
     }
 
@@ -55,7 +47,6 @@ namespace LeapMIDIX {
         pthread_mutex_init(&debug_output_mutex, NULL);
         
         pthread_mutex_init(&messageQueueMutex, NULL);
-        pthread_mutex_init(&messageQueueCondMutex, NULL);
         pthread_cond_init(&messageQueueCond, NULL);
         
         packetListSize = 512; // buffer size for midi packet messages
@@ -76,7 +67,6 @@ namespace LeapMIDIX {
             pthread_cancel(messageQueueThread);
         
         pthread_mutex_destroy(&messageQueueMutex);
-        pthread_mutex_destroy(&messageQueueCondMutex);
         pthread_cond_destroy(&messageQueueCond);
         
         std::cout << "closed down device\n";
@@ -113,34 +103,16 @@ namespace LeapMIDIX {
         while (1) {
             pthread_testcancel();
             
-            // CHECK IF QUEUE IS EMPTY, IF NOT DON'T DO TIMEWAIT
-            // (condvar will not be broadcasted if message is added right here)
-//            int lockStatus = pthread_mutex_trylock(&messageQueueMutex);
-//            if (lockStatus != 0) {
-//                if (lockStatus == EBUSY) {
-//                    std::cout << "EBUSY\n";
-//                } else {
-//                    std::cerr << "invalid mutex detected\n";
-//                    exit(1);
-//                }
-//            }
-//            if (midiMessageQueue.empty()) {
-//                pthread_mutex_unlock(&messageQueueMutex);
-//                continue;
-//            }
-            
             // acquire mutex once there is a message waiting for us
-            pthread_mutex_lock(&messageQueueCondMutex);
+            pthread_mutex_lock(&messageQueueMutex);
             gettimeofday(&tv, NULL);
             ts.tv_sec = tv.tv_sec + 2; // timeout 2s
             ts.tv_nsec = 0;
-            int res = pthread_cond_timedwait(&messageQueueCond, &messageQueueCondMutex, &ts);
+            int res = pthread_cond_timedwait(&messageQueueCond, &messageQueueMutex, &ts);
             if (res == ETIMEDOUT) {
                 // no message was waiting
-                // "Upon successful return, the mutex shall have been locked and shall be owned by the calling thread"
-                // is this "successful return"? do we need to unlock? i do not know
-                pthread_mutex_unlock(&messageQueueCondMutex);
-                //lmx_dev_debug("ETIMEDOUT\n");
+                lmx_dev_debug("ETIMEDOUT\n");
+                pthread_mutex_unlock(&messageQueueMutex);
                 continue;
             }
             if (res != 0) {
@@ -150,13 +122,13 @@ namespace LeapMIDIX {
             }
             
             if (midiMessageQueue.empty()) {
-                pthread_mutex_unlock(&messageQueueCondMutex);
+                lmx_dev_debug("EMPTY\n");
+                pthread_mutex_unlock(&messageQueueMutex);
                 continue;
             }
             
             // copy messages from shared queue into thread-local copy
             // (is there a cleaner way to do this?)
-            pthread_mutex_lock(&messageQueueMutex);
 //            lmx_dev_debug("queue copy lock acquired\n");
             std::queue<midi_message> queueCopy;
             while (! midiMessageQueue.empty()) {
@@ -169,15 +141,13 @@ namespace LeapMIDIX {
                 std::cerr << "message queue mutex unlock failure\n";
                 exit(1);
             }
-//            lmx_dev_debug("copied queue, unlocking\n");
+            lmx_dev_debug("copied queue, unlocking\n");
             
             // add control messages to MIDI packet queue
             queueControlMessages(queueCopy);
             
             // flush MIDI queue to output
             sendMIDIQueue();
-            
-            pthread_mutex_unlock(&messageQueueCondMutex);
         }
         
         return NULL;

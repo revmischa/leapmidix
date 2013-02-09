@@ -43,7 +43,6 @@ namespace LeapMIDIX {
         pthread_mutex_t messageQueueMutex;
         pthread_t messageQueueThread;
         pthread_cond_t messageQueueCond;
-        pthread_mutex_t messageQueueCondMutex;
         
         // add MIDI control messages to the MIDI packet queue to transmit
         virtual void queueControlMessages(std::queue<midi_message> &messages);
