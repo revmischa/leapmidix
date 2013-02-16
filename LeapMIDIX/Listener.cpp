@@ -30,6 +30,10 @@ namespace LeapMIDIX {
         viz = new Visualizer();
         viz->init(this);
 #endif
+        
+        // create default program
+        LeapMIDI::Program::Control *controlProgram = new LeapMIDI::Program::Control();
+        currentProgram = controlProgram;
     }
     
     Listener::~Listener() {
@@ -37,13 +41,31 @@ namespace LeapMIDIX {
             delete viz;
         if (device)
             delete device;
+        if (currentProgram)
+            delete currentProgram;
     }
     
-    void Listener::onGestureRecognized(const Leap::Controller &controller, LeapMIDI::Gesture::Base &gesture) {
+    void Listener::onFrame(const Leap::Controller &controller) {
+        if (! currentProgram) return;
+        
+        vector<ControlBasePtr> controls;
+        currentProgram->findControls(controller, controls);
+        //        cout << " found " << controls.size() << " controls\n";
+        for (vector<ControlBasePtr>::iterator it = controls.begin(); it != controls.end(); it++) {
+            LeapMIDI::midi_control_index controlIndex = (*it)->controlIndex();
+            // control value
+            LeapMIDI::midi_control_value val = (*it)->mappedValue();
+            
+            device->addControlMessage(controlIndex, val);
+        }
+    }
+
+    
+    void Listener::onGestureRecognized(const Leap::Controller &controller, GestureBasePtr gesture) {
         LeapMIDI::Listener::onGestureRecognized(controller, gesture);
     }
     
-    void Listener::onControlUpdated(const Leap::Controller &controller, LeapMIDI::Gesture::Base &gesture, LeapMIDI::Control::Base &control) {
+    void Listener::onControlUpdated(const Leap::Controller &controller, GestureBasePtr gesture, ControlBasePtr control) {
         // call superclass method
         LeapMIDI::Listener::onControlUpdated(controller, gesture, control);
         
@@ -51,9 +73,9 @@ namespace LeapMIDIX {
         // ...
         
         // control
-        LeapMIDI::midi_control_index controlIndex = control.controlIndex();
+        LeapMIDI::midi_control_index controlIndex = control->controlIndex();
         // control value
-        LeapMIDI::midi_control_value val = control.mappedValue();
+        LeapMIDI::midi_control_value val = control->mappedValue();
         
         device->addControlMessage(controlIndex, val);
     }

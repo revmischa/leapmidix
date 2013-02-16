@@ -31,8 +31,9 @@ namespace LeapMIDIX {
         // run forever, drawing frames
         void drawLoop();
         
-        virtual void onGestureRecognized(const Leap::Controller &controller, LeapMIDI::Gesture::Base &gesture);
-        virtual void onControlUpdated(const Leap::Controller &controller,LeapMIDI::Gesture::Base &gesture, LeapMIDI::Control::Base &control);
+        virtual void onGestureRecognized(const Leap::Controller &controller, GestureBasePtr gesture);
+        virtual void onControlUpdated(const Leap::Controller &controller, GestureBasePtr gesture, ControlBasePtr control);
+        virtual void onFrame(const Leap::Controller &controller);
         
     protected:
         void processFrameRaw(const Leap::Frame &frame);
