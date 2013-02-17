@@ -14,8 +14,6 @@ namespace leapmidi {
 
 void FingerControl::initGestures() {
     // instantiate gesture recognizer singletons
-    //        Gesture::Ball *ballGesture = new Gesture::Ball();
-    //        gestureRecognizers.push_back(ballGesture);
     FingerGesturePtr fingerGesture = make_shared<FingerGesture>();
     gestureRecognizers.push_back((GesturePtr)fingerGesture);
 }
