@@ -115,7 +115,7 @@ void *Device::messageSendingThreadEntry() {
             int res = pthread_cond_timedwait(&messageQueueCond, &messageQueueMutex, &ts);
             if (res == ETIMEDOUT) {
                 // no message was waiting
-                lmx_dev_debug("ETIMEDOUT\n");
+//                lmx_dev_debug("ETIMEDOUT\n");
                 pthread_mutex_unlock(&messageQueueMutex);
                 continue;
             }
