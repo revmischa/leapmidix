@@ -33,9 +33,13 @@ void LMXListener::init(Leap::Controller *controller) {
 #endif
     
     // create default program
-    FingerControlPtr controlProgram = make_shared<FingerControl>();
+/*    FingerControlPtr controlProgram = make_shared<FingerControl>();
     controlProgram->initGestures();
     setProgram(controlProgram);
+  */
+    FingerNotePtr noteProgram = make_shared<FingerNote>();
+    noteProgram->initGestures();
+    setProgram(noteProgram);
 }
 
 LMXListener::~LMXListener() {
@@ -70,6 +74,29 @@ void LMXListener::onControlUpdated(const Leap::Controller &controller, GesturePt
     
     device->addControlMessage(controlIndex, val);
 }
+    
+    void LMXListener::onNoteUpdated(const Leap::Controller &controller, GesturePtr gesture, NotePtr note) {
+        // call superclass method
+        leapmidi::Listener::onNoteUpdated(controller, gesture, note);
+        
+        // draw gesture and note output
+        // ...
+        
+        // note
+        leapmidi::midi_note_index noteIndex = note->noteIndex();
+        // control value
+        leapmidi::midi_note_value val = note->mappedValue();
+        
+        if (1) {
+            cout << "recognized note index " << noteIndex
+            << " (" << note->description() << ")"
+            << ", raw value: "
+            << note->rawValue() << " mapped value: " << val << endl;
+        }
+        
+        device->addNoteMessage(noteIndex, val);
+    }
+
 
 void LMXListener::drawLoop() {
 #ifdef LMX_VISUALIZER_ENABLED

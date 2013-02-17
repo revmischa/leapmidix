@@ -12,7 +12,7 @@
 
 namespace leapmidi {
     
-class FingerControl : public Program {
+class FingerControl : public ControlProgram {
 public:
     virtual void initGestures();
 };

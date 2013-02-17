@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6014F90E16D0800B007B14EF /* FingerNoteProgram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6014F90C16D0800B007B14EF /* FingerNoteProgram.cpp */; };
+		6014F90F16D0800B007B14EF /* FingerNoteProgram.h in Headers */ = {isa = PBXBuildFile; fileRef = 6014F90D16D0800B007B14EF /* FingerNoteProgram.h */; };
 		C31B003C1675A5A100383230 /* libLeap.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C31B003B1675A5A100383230 /* libLeap.dylib */; };
 		C3249770167D3B120093F7B8 /* leapmidi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C3249767167D3A100093F7B8 /* leapmidi.a */; };
 		C3249773167D3B730093F7B8 /* libLeap.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = C31B003B1675A5A100383230 /* libLeap.dylib */; };
@@ -85,6 +87,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6014F90C16D0800B007B14EF /* FingerNoteProgram.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FingerNoteProgram.cpp; sourceTree = "<group>"; };
+		6014F90D16D0800B007B14EF /* FingerNoteProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FingerNoteProgram.h; sourceTree = "<group>"; };
 		C31B003B1675A5A100383230 /* libLeap.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libLeap.dylib; path = ../../../../Leap_SDK/lib/libLeap.dylib; sourceTree = "<group>"; };
 		C324975D167D3A100093F7B8 /* leapmidi.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = leapmidi.xcodeproj; path = ../leapmidi/leapmidi.xcodeproj; sourceTree = "<group>"; };
 		C33FEF5D166AAECD006BFE81 /* controls.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = controls.cpp; sourceTree = "<group>"; };
@@ -706,6 +710,8 @@
 			children = (
 				C361AA7416C3A6CC00771054 /* FingerControlProgram.cpp */,
 				C361AA7516C3A6CC00771054 /* FingerControlProgram.h */,
+				6014F90C16D0800B007B14EF /* FingerNoteProgram.cpp */,
+				6014F90D16D0800B007B14EF /* FingerNoteProgram.h */,
 			);
 			path = program;
 			sourceTree = "<group>";
@@ -800,6 +806,7 @@
 				C3882457166AB11B007FE3B3 /* wglew.h in Headers */,
 				C3F81493166AC56E0039AB7E /* LMXListener.h in Headers */,
 				C361AA7716C3A6CC00771054 /* FingerControlProgram.h in Headers */,
+				6014F90F16D0800B007B14EF /* FingerNoteProgram.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -891,6 +898,7 @@
 				C3F81443166A08780039AB7E /* Device.cpp in Sources */,
 				C3F81492166AC56E0039AB7E /* LMXListener.cpp in Sources */,
 				C361AA7616C3A6CC00771054 /* FingerControlProgram.cpp in Sources */,
+				6014F90E16D0800B007B14EF /* FingerNoteProgram.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

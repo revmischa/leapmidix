@@ -23,6 +23,11 @@ namespace leapmidi {
 typedef struct {
     leapmidi::midi_control_index control_index;
     leapmidi::midi_control_value control_value;
+
+    leapmidi::midi_note_index note_index;
+    leapmidi::midi_note_value note_value;
+    
+    int type;
     timeval timestamp;
 } midi_message;
 
@@ -33,7 +38,8 @@ public:
     virtual void init();
     
     virtual void addControlMessage(leapmidi::midi_control_index controlIndex, leapmidi::midi_control_value controlValue);
-            
+    virtual void addNoteMessage(leapmidi::midi_note_index noteIndex, leapmidi::midi_note_value noteValue);
+    
 protected:
     virtual void initPacketList();
     virtual void createDevice();
@@ -46,8 +52,9 @@ protected:
     pthread_cond_t messageQueueCond;
     
     // add MIDI control messages to the MIDI packet queue to transmit
-    virtual void queueControlMessages(std::queue<midi_message> &messages);
+    virtual void queueMessages(std::queue<midi_message> &messages);
     virtual void queueControlPacket(leapmidi::midi_control_index control, leapmidi::midi_control_value value);
+    virtual void queueNotePacket(leapmidi::midi_note_index note, leapmidi::midi_note_value value);
     
     // send midi packets
     virtual OSStatus sendMIDIQueue();
@@ -57,6 +64,8 @@ protected:
     MIDIPacketList *midiPacketList;
     unsigned int packetListSize;
     MIDIPacket *curPacket;
+    
+    std::vector<int> activeNotes;
     
 private:
     static void *_messageSendingThreadEntry(void * This) {((Device *)This)->messageSendingThreadEntry(); return NULL;}

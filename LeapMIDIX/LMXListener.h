@@ -15,6 +15,7 @@
 #include "Leap.h"
 #include "LeapMIDI.h"
 #include "FingerControlProgram.h"
+#include "FingerNoteProgram.h"
 
 //#define LMX_VISUALIZER_ENABLED 1
 
@@ -34,6 +35,7 @@ public:
     
     virtual void onGestureRecognized(const Leap::Controller &controller, leapmidi::GesturePtr gesture);
     virtual void onControlUpdated(const Leap::Controller &controller, leapmidi::GesturePtr gesture, leapmidi::ControlPtr control);
+    virtual void onNoteUpdated(const Leap::Controller &controller, leapmidi::GesturePtr gesture, leapmidi::NotePtr note);
     
 protected:
     void processFrameRaw(const Leap::Frame &frame);

@@ -33,11 +33,25 @@ void Device::addControlMessage(leapmidi::midi_control_index controlIndex, leapmi
     midi_message msg;
     msg.control_index = controlIndex;
     msg.control_value = controlValue;
+    msg.type = MSG_CONTROL;
     gettimeofday(&msg.timestamp, NULL);
     midiMessageQueue.push(msg);
     pthread_mutex_unlock(&messageQueueMutex);
     pthread_cond_signal(&messageQueueCond);
 }
+    
+    void Device::addNoteMessage(leapmidi::midi_note_index noteIndex, leapmidi::midi_note_value noteValue) {
+        pthread_mutex_lock(&messageQueueMutex);
+        
+        midi_message msg;
+        msg.note_index = noteIndex;
+        msg.note_value = noteValue;
+        msg.type = MSG_NOTE;
+        gettimeofday(&msg.timestamp, NULL);
+        midiMessageQueue.push(msg);
+        pthread_mutex_unlock(&messageQueueMutex);
+        pthread_cond_signal(&messageQueueCond);
+    }
 
 
 /*******/
@@ -148,7 +162,7 @@ void *Device::messageSendingThreadEntry() {
         }
         
         // add control messages to MIDI packet queue
-        queueControlMessages(queueCopy);
+        queueMessages(queueCopy);
         
         // flush MIDI queue to output
         sendMIDIQueue();
@@ -157,7 +171,7 @@ void *Device::messageSendingThreadEntry() {
     return NULL;
 }
 
-void Device::queueControlMessages(std::queue<midi_message> &messages) {
+void Device::queueMessages(std::queue<midi_message> &messages) {
     struct timeval tv;
 
     while (! messages.empty()) {
@@ -174,8 +188,15 @@ void Device::queueControlMessages(std::queue<midi_message> &messages) {
             continue; // drop message
         }
         
-        // we have data to send. i think this blocks
-        queueControlPacket(msg.control_index, msg.control_value);
+        if (msg.type == MSG_CONTROL) {
+            // we have data to send. i think this blocks
+            queueControlPacket(msg.control_index, msg.control_value);
+        } else if (msg.type == MSG_NOTE) {
+            // we have data to send. i think this blocks
+            queueNotePacket(msg.note_index, msg.note_value);
+        } else {
+            printf("Unknown MIDI message type; ignoring\n");
+        }
     }
 }
 
@@ -213,6 +234,16 @@ void Device::queueControlPacket(leapmidi::midi_control_index control, leapmidi::
     packetOut[1] = midiControl;
     packetOut[2] = value;
     
+    int z;
+    printf("Sending MIDI packet: ");
+    for (z = 0; z < 3; z++)
+    {
+        if (z > 0) printf(":");
+        printf("%02X", packetOut[z]);
+    }
+    printf("\n");
+
+    
     // add packet to packet list
     curPacket = MIDIPacketListAdd(midiPacketList, packetListSize, curPacket, 0, 3, packetOut);
     if (! curPacket) {
@@ -220,6 +251,76 @@ void Device::queueControlPacket(leapmidi::midi_control_index control, leapmidi::
         exit(1);
     }
 }
+    // note = MIDI note #, 0-119
+    // value = MIDI note message velocity, 0-127
+    void Device::queueNotePacket(leapmidi::midi_note_index note, leapmidi::midi_note_value value) {
+        assert(note < 127);
+        assert(value <= 127);
+        
+        // assign channel value
+        // (hardcoded to channel 0 - Registered Parameter LSB)
+        unsigned char channelBase = 0x90;
+        unsigned char channel = 0;
+        
+        if (value < 50) {
+            // if value is less than 50, turn note off
+            channelBase = 0x80;
+        }
+
+        unsigned char midiChannel = channelBase + channel;
+        
+        // assign control selector
+        unsigned char noteBase = 0x48;
+        unsigned char midiNote = noteBase + note;
+        
+        if (value >= 50) {
+            //unsigned char midiControl = noteBase + note;
+            int i = 0;
+            for (i = 0; i < activeNotes.size(); i++) {
+                if (activeNotes.at(i) == midiNote) {
+                    // this note is already on, don't try playing it again
+                    printf("Not playing another note on\n");
+                    return;
+                }
+            }
+            
+            activeNotes.push_back(midiNote);
+        } else if (value < 50) {
+            //unsigned char midiControl = noteBase + note;
+            int i = 0;
+            for (i = 0; i < activeNotes.size(); i++) {
+                if (activeNotes.at(i) == midiNote) {
+                    // remove from list of active notes
+                    activeNotes.erase(activeNotes.begin() + i);
+                }
+            }
+        }
+        
+        // build midi packet
+        Byte packetOut[3];
+        packetOut[0] = midiChannel;
+        packetOut[1] = midiNote;
+        packetOut[2] = 0x7F;
+        //        packetOut[2] = value;
+        
+        int z;
+        printf("Sending MIDI packet: ");
+        for (z = 0; z < 3; z++)
+        {
+            if (z > 0) printf(":");
+            printf("%02X", packetOut[z]);
+        }
+        printf("\n");
+        
+        
+        // add packet to packet list
+        curPacket = MIDIPacketListAdd(midiPacketList, packetListSize, curPacket, 0, 3, packetOut);
+        if (! curPacket) {
+            std::cerr << "Buffer overrun on midi packet list\n";
+            exit(1);
+        }
+    }
+
 
 } // namespace leapmidi
 
