@@ -12,61 +12,62 @@
 #include <iostream>
 #include <map>
 
-#include "Listener.h"
+#include "LMXListener.h"
 #include "Leap.h"
 
-namespace LeapMIDIX {
+namespace leapmidi {
 
-    class Listener;
+class LMXListener;
 
-    class VerticalBar {
-    public:
-        VerticalBar(int originX, int originY, unsigned char initialMIDIValue,
-            int initialLeapValue);
-        
-        void draw();
-        
-        void setCurrentMidiValue(unsigned char v) { currentMIDIValue_ = v; }
-        void SetCurrentLeapValue(int v) { currentLeapValue_ = v; }
-        
-    private:
-        int originX_;
-        int originY_;
-        
-        int absoluteMin_;
-        int absoluteMax_;
-        
-        int userDefinedMin_;
-        int userDefinedMax_;
-        
-        int currentLeapValue_;
-        unsigned char currentMIDIValue_;
-    };
+class VerticalBar {
+public:
+    VerticalBar(int originX, int originY, unsigned char initialMIDIValue,
+        int initialLeapValue);
     
-    typedef std::shared_ptr<VerticalBar> VerticalBarPtr;
+    void draw();
     
-    class Visualizer {
-    public:
-        ~Visualizer();
-        
-        // open window, set up glfw
-        // returns true on success
-        int init(Listener *listener_, Leap::Controller *controller_);
-        
-        // clean up GL
-        void terminate();
-        
-        // run forever, drawing frames
-        void drawLoop();
-        
+    void setCurrentMidiValue(unsigned char v) { currentMIDIValue_ = v; }
+    void SetCurrentLeapValue(int v) { currentLeapValue_ = v; }
+    
+private:
+    int originX_;
+    int originY_;
+    
+    int absoluteMin_;
+    int absoluteMax_;
+    
+    int userDefinedMin_;
+    int userDefinedMax_;
+    
+    int currentLeapValue_;
+    unsigned char currentMIDIValue_;
+};
+
+typedef std::shared_ptr<VerticalBar> VerticalBarPtr;
+
+class Visualizer {
+public:
+    ~Visualizer();
+    
+    // open window, set up glfw
+    // returns true on success
+    int init(LMXListener *listener_, Leap::Controller *controller_);
+    
+    // clean up GL
+    void terminate();
+    
+    // run forever, drawing frames
+    void drawLoop();
+    
 //        void drawTools(const std::map<LeapMIDI::MIDITool::ToolDescription, LeapMIDI::MIDIToolPtr>&);
-        
-    private:
+    
+private:
 //        std::map<LeapMIDI::MIDIToolPtr, VerticalBarPtr> toolBarMap_;
 
-        LeapMIDIX::Listener *listener;
-        Leap::Controller *controller;
-    };
-}
+    LMXListener *listener;
+    Leap::Controller *controller;
+};
+    
+} // namespace leapmidi
 
 #endif /* defined(__LeapMIDIX__Visualizer__) */

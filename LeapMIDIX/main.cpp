@@ -9,15 +9,13 @@
 #include <iostream>
 #include <unistd.h>
 #include <time.h>
-#include "Listener.h"
-
-using namespace LeapMIDIX;
+#include "LMXListener.h"
 
 void sendNote();
 
 int main(int argc, const char * argv[]) {
     // start listening for events
-    LeapMIDIX::Listener listener;
+    leapmidi::LMXListener listener;
     Leap::Controller controller;
     
     listener.init(&controller);
