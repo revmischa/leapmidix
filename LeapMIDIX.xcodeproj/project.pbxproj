@@ -43,6 +43,8 @@
 		C3B746C1167D7109004524D9 /* Leap.h in Headers */ = {isa = PBXBuildFile; fileRef = C3B746C0167D7109004524D9 /* Leap.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C3B746C3167D7122004524D9 /* LeapMIDI.h in Headers */ = {isa = PBXBuildFile; fileRef = C3B746C2167D7122004524D9 /* LeapMIDI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C3C6C211175BE3660018AABD /* leapmidi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C387CFE5175BCA24004FF256 /* leapmidi.a */; };
+		C3C6C214175BF5ED0018AABD /* BallControlProgram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3C6C212175BF5ED0018AABD /* BallControlProgram.cpp */; };
+		C3C6C215175BF5ED0018AABD /* BallControlProgram.h in Headers */ = {isa = PBXBuildFile; fileRef = C3C6C213175BF5ED0018AABD /* BallControlProgram.h */; };
 		C3F81439166A08170039AB7E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3F81438166A08170039AB7E /* main.cpp */; };
 		C3F81443166A08780039AB7E /* Device.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3F81441166A08780039AB7E /* Device.cpp */; };
 		C3F81445166A08A10039AB7E /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3F81444166A08A10039AB7E /* CoreMIDI.framework */; };
@@ -354,6 +356,8 @@
 		C3A4E36F175BC0DF006C8825 /* MIDIProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIDIProgram.h; sourceTree = "<group>"; };
 		C3B746C0167D7109004524D9 /* Leap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Leap.h; path = ../leapmidi/contrib/Leap.h; sourceTree = "<group>"; };
 		C3B746C2167D7122004524D9 /* LeapMIDI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LeapMIDI.h; path = ../leapmidi/leapmidi/LeapMIDI.h; sourceTree = "<group>"; };
+		C3C6C212175BF5ED0018AABD /* BallControlProgram.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BallControlProgram.cpp; sourceTree = "<group>"; };
+		C3C6C213175BF5ED0018AABD /* BallControlProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BallControlProgram.h; sourceTree = "<group>"; };
 		C3F81434166A08170039AB7E /* LeapMIDIX */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LeapMIDIX; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3F81438166A08170039AB7E /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		C3F81441166A08780039AB7E /* Device.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Device.cpp; sourceTree = "<group>"; };
@@ -707,6 +711,8 @@
 				C361AA7516C3A6CC00771054 /* FingerControlProgram.h */,
 				6014F90C16D0800B007B14EF /* FingerNoteProgram.cpp */,
 				6014F90D16D0800B007B14EF /* FingerNoteProgram.h */,
+				C3C6C212175BF5ED0018AABD /* BallControlProgram.cpp */,
+				C3C6C213175BF5ED0018AABD /* BallControlProgram.h */,
 			);
 			path = program;
 			sourceTree = "<group>";
@@ -810,6 +816,7 @@
 				C361AA7716C3A6CC00771054 /* FingerControlProgram.h in Headers */,
 				6014F90F16D0800B007B14EF /* FingerNoteProgram.h in Headers */,
 				C3A4E371175BC0DF006C8825 /* MIDIProgram.h in Headers */,
+				C3C6C215175BF5ED0018AABD /* BallControlProgram.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -903,6 +910,7 @@
 				C361AA7616C3A6CC00771054 /* FingerControlProgram.cpp in Sources */,
 				6014F90E16D0800B007B14EF /* FingerNoteProgram.cpp in Sources */,
 				C3A4E370175BC0DF006C8825 /* MIDIProgram.cpp in Sources */,
+				C3C6C214175BF5ED0018AABD /* BallControlProgram.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

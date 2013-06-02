@@ -21,7 +21,7 @@ public:
     virtual void initGestures(std::vector<GesturePtr>&gestureRecognizers);
 };
 
-typedef shared_ptr<FingerNote> FingerNotePtr;
+typedef shared_ptr<FingerNote> FingerNoteProgramPtr;
     
 }
 

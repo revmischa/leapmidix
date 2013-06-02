@@ -17,6 +17,7 @@
 #include "MIDIListener.h"
 #include "FingerControlProgram.h"
 #include "FingerNoteProgram.h"
+#include "BallControlProgram.h"
 #include "MIDINote.h"
 
 //#define LMX_VISUALIZER_ENABLED 1

@@ -1,5 +1,5 @@
 //
-//  Listener.cpp
+//  LMXListener.cpp
 //  LeapMIDIX
 //
 //  Created by Mischa Spiegelmock on 12/1/12.
@@ -32,13 +32,19 @@ void LMXListener::init(Leap::Controller *controller) {
     viz->init(this);
 #endif
     
+    // PROGRAM SETUP
+    // Setting the current program by calling initGestures() will define
+    // a new set of active gesture recognizers. We should add a UI to
+    // let the user choose the current active program.
+    
     // create default program
-/*    FingerControlPtr controlProgram = make_shared<FingerControl>();
-    controlProgram->initGestures();
-    setProgram(controlProgram);
-  */
-    FingerNotePtr noteProgram = make_shared<FingerNote>();
-    noteProgram->initGestures(gestureRecognizers());
+    FingerControlProgramPtr program = make_shared<FingerControl>();
+    //    FingerNotePtr program = make_shared<FingerNote>();
+//    BallControlProgramPtr program = make_shared<BallControl>();
+    
+    // load program's set of gesture recognizers
+    program->initGestures(gestureRecognizers());
+    
 //    setProgram(noteProgram);
 }
 
