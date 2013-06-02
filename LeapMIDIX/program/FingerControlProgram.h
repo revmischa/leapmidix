@@ -18,7 +18,7 @@ namespace leapmidi {
     
 class FingerControl : public MIDIProgram {
 public:
-    virtual void initGestures(std::vector<GesturePtr>&));
+    virtual void initGestures(std::vector<GesturePtr>&);
 
     typedef shared_ptr<FingerControl> FingerControlPtr;
 };

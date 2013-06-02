@@ -14,8 +14,10 @@
 #include "Device.h"
 #include "Leap.h"
 #include "LeapMIDI.h"
+#include "MIDIListener.h"
 #include "FingerControlProgram.h"
 #include "FingerNoteProgram.h"
+#include "MIDINote.h"
 
 //#define LMX_VISUALIZER_ENABLED 1
 
@@ -33,9 +35,9 @@ public:
     // run forever, drawing frames
     void drawLoop();
     
-    virtual void onGestureRecognized(const Leap::Controller &controller, leapmidi::GesturePtr gesture);
-    virtual void onControlUpdated(const Leap::Controller &controller, leapmidi::GesturePtr gesture, leapmidi::ControlPtr control);
-    virtual void onNoteUpdated(const Leap::Controller &controller, leapmidi::GesturePtr gesture, leapmidi::NotePtr note);
+    virtual void onGestureRecognized(const Leap::Controller &controller, GesturePtr gesture);
+    virtual void onControlUpdated(const Leap::Controller &controller, GesturePtr gesture, ControlPtr control);
+    virtual void onNoteUpdated(const Leap::Controller &controller, GesturePtr gesture, NotePtr note);
     
 protected:
     void processFrameRaw(const Leap::Frame &frame);

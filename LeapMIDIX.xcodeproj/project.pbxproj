@@ -10,7 +10,6 @@
 		6014F90E16D0800B007B14EF /* FingerNoteProgram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6014F90C16D0800B007B14EF /* FingerNoteProgram.cpp */; };
 		6014F90F16D0800B007B14EF /* FingerNoteProgram.h in Headers */ = {isa = PBXBuildFile; fileRef = 6014F90D16D0800B007B14EF /* FingerNoteProgram.h */; };
 		C31B003C1675A5A100383230 /* libLeap.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C31B003B1675A5A100383230 /* libLeap.dylib */; };
-		C3249770167D3B120093F7B8 /* leapmidi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C3249767167D3A100093F7B8 /* leapmidi.a */; };
 		C3249773167D3B730093F7B8 /* libLeap.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = C31B003B1675A5A100383230 /* libLeap.dylib */; };
 		C33FF061166AAECE006BFE81 /* libGLEW.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C33FF057166AAECE006BFE81 /* libGLEW.a */; };
 		C33FF062166AAECE006BFE81 /* libglfw.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C33FF058166AAECE006BFE81 /* libglfw.a */; };
@@ -43,6 +42,7 @@
 		C3A4E371175BC0DF006C8825 /* MIDIProgram.h in Headers */ = {isa = PBXBuildFile; fileRef = C3A4E36F175BC0DF006C8825 /* MIDIProgram.h */; };
 		C3B746C1167D7109004524D9 /* Leap.h in Headers */ = {isa = PBXBuildFile; fileRef = C3B746C0167D7109004524D9 /* Leap.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C3B746C3167D7122004524D9 /* LeapMIDI.h in Headers */ = {isa = PBXBuildFile; fileRef = C3B746C2167D7122004524D9 /* LeapMIDI.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C3C6C211175BE3660018AABD /* leapmidi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C387CFE5175BCA24004FF256 /* leapmidi.a */; };
 		C3F81439166A08170039AB7E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3F81438166A08170039AB7E /* main.cpp */; };
 		C3F81443166A08780039AB7E /* Device.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3F81441166A08780039AB7E /* Device.cpp */; };
 		C3F81445166A08A10039AB7E /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3F81444166A08A10039AB7E /* CoreMIDI.framework */; };
@@ -51,23 +51,23 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		C3249766167D3A100093F7B8 /* PBXContainerItemProxy */ = {
+		C387CFE4175BCA24004FF256 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = C324975D167D3A100093F7B8 /* leapmidi.xcodeproj */;
+			containerPortal = C387CFDB175BCA24004FF256 /* leapmidi.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = C33EF2AF16672833001D3D0E;
 			remoteInfo = leapmidi;
 		};
-		C3249768167D3A100093F7B8 /* PBXContainerItemProxy */ = {
+		C387CFE6175BCA24004FF256 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = C324975D167D3A100093F7B8 /* leapmidi.xcodeproj */;
+			containerPortal = C387CFDB175BCA24004FF256 /* leapmidi.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = C33EF32216673D10001D3D0E;
 			remoteInfo = leapmidi_test;
 		};
-		C324976E167D3AEA0093F7B8 /* PBXContainerItemProxy */ = {
+		C387D001175BCC8D004FF256 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = C324975D167D3A100093F7B8 /* leapmidi.xcodeproj */;
+			containerPortal = C387CFDB175BCA24004FF256 /* leapmidi.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = C33EF2AE16672833001D3D0E;
 			remoteInfo = leapmidi;
@@ -91,7 +91,6 @@
 		6014F90C16D0800B007B14EF /* FingerNoteProgram.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FingerNoteProgram.cpp; sourceTree = "<group>"; };
 		6014F90D16D0800B007B14EF /* FingerNoteProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FingerNoteProgram.h; sourceTree = "<group>"; };
 		C31B003B1675A5A100383230 /* libLeap.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libLeap.dylib; path = ../../../../Leap_SDK/lib/libLeap.dylib; sourceTree = "<group>"; };
-		C324975D167D3A100093F7B8 /* leapmidi.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = leapmidi.xcodeproj; path = ../leapmidi/leapmidi.xcodeproj; sourceTree = "<group>"; };
 		C33FEF5D166AAECD006BFE81 /* controls.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = controls.cpp; sourceTree = "<group>"; };
 		C33FEF5E166AAECD006BFE81 /* controls.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = controls.hpp; sourceTree = "<group>"; };
 		C33FEF5F166AAECD006BFE81 /* objloader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = objloader.cpp; sourceTree = "<group>"; };
@@ -336,6 +335,7 @@
 		C35C783D166AAD2F00557211 /* Visualizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Visualizer.h; sourceTree = "<group>"; };
 		C361AA7416C3A6CC00771054 /* FingerControlProgram.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FingerControlProgram.cpp; sourceTree = "<group>"; };
 		C361AA7516C3A6CC00771054 /* FingerControlProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FingerControlProgram.h; sourceTree = "<group>"; };
+		C387CFDB175BCA24004FF256 /* leapmidi.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = leapmidi.xcodeproj; path = ../leapmidi/leapmidi.xcodeproj; sourceTree = "<group>"; };
 		C3882450166AB11B007FE3B3 /* glew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glew.h; sourceTree = "<group>"; };
 		C3882451166AB11B007FE3B3 /* glfw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glfw.h; sourceTree = "<group>"; };
 		C3882452166AB11B007FE3B3 /* glxew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glxew.h; sourceTree = "<group>"; };
@@ -369,7 +369,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3249770167D3B120093F7B8 /* leapmidi.a in Frameworks */,
+				C3C6C211175BE3660018AABD /* leapmidi.a in Frameworks */,
 				C3882475166AB470007FE3B3 /* AppKit.framework in Frameworks */,
 				C3882474166AB45D007FE3B3 /* ApplicationServices.framework in Frameworks */,
 				C3882469166AB20E007FE3B3 /* IOKit.framework in Frameworks */,
@@ -384,15 +384,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C324975E167D3A100093F7B8 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				C3249767167D3A100093F7B8 /* leapmidi.a */,
-				C3249769167D3A100093F7B8 /* leapmidi_test */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		C33FEF5B166AAECD006BFE81 /* contrib */ = {
 			isa = PBXGroup;
 			children = (
@@ -720,6 +711,15 @@
 			path = program;
 			sourceTree = "<group>";
 		};
+		C387CFDC175BCA24004FF256 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C387CFE5175BCA24004FF256 /* leapmidi.a */,
+				C387CFE7175BCA24004FF256 /* leapmidi_test */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		C388244F166AB11B007FE3B3 /* GL */ = {
 			isa = PBXGroup;
 			children = (
@@ -753,9 +753,9 @@
 		C3F81429166A08170039AB7E = {
 			isa = PBXGroup;
 			children = (
+				C387CFDB175BCA24004FF256 /* leapmidi.xcodeproj */,
 				C3B746C2167D7122004524D9 /* LeapMIDI.h */,
 				C3B746C0167D7109004524D9 /* Leap.h */,
-				C324975D167D3A100093F7B8 /* leapmidi.xcodeproj */,
 				C33FEF5B166AAECD006BFE81 /* contrib */,
 				C3882476166AB48E007FE3B3 /* Frameworks */,
 				C3F81437166A08170039AB7E /* LeapMIDIX */,
@@ -828,7 +828,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				C324976F167D3AEA0093F7B8 /* PBXTargetDependency */,
+				C387D002175BCC8D004FF256 /* PBXTargetDependency */,
 			);
 			name = LeapMIDIX;
 			productName = LeapMIDIX;
@@ -856,8 +856,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = C324975E167D3A100093F7B8 /* Products */;
-					ProjectRef = C324975D167D3A100093F7B8 /* leapmidi.xcodeproj */;
+					ProductGroup = C387CFDC175BCA24004FF256 /* Products */;
+					ProjectRef = C387CFDB175BCA24004FF256 /* leapmidi.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -868,18 +868,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		C3249767167D3A100093F7B8 /* leapmidi.a */ = {
+		C387CFE5175BCA24004FF256 /* leapmidi.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.dylib";
 			path = leapmidi.a;
-			remoteRef = C3249766167D3A100093F7B8 /* PBXContainerItemProxy */;
+			remoteRef = C387CFE4175BCA24004FF256 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		C3249769167D3A100093F7B8 /* leapmidi_test */ = {
+		C387CFE7175BCA24004FF256 /* leapmidi_test */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.executable";
 			path = leapmidi_test;
-			remoteRef = C3249768167D3A100093F7B8 /* PBXContainerItemProxy */;
+			remoteRef = C387CFE6175BCA24004FF256 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -909,10 +909,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		C324976F167D3AEA0093F7B8 /* PBXTargetDependency */ = {
+		C387D002175BCC8D004FF256 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = leapmidi;
-			targetProxy = C324976E167D3AEA0093F7B8 /* PBXContainerItemProxy */;
+			targetProxy = C387D001175BCC8D004FF256 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -940,6 +940,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = ../../leapmidi/leapmidi;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
 				PRIVATE_HEADERS_FOLDER_PATH = /usr/local/include;
@@ -967,6 +968,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = ../../leapmidi/leapmidi;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRIVATE_HEADERS_FOLDER_PATH = /usr/local/include;
 				PUBLIC_HEADERS_FOLDER_PATH = /usr/local/include;
@@ -983,7 +985,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/LeapMIDIX/contrib/lib\"",
 					"\"$(SRCROOT)/../leapmidi/contrib\"",
-					"\"$(SRCROOT)/../Leap_SDK/lib\"",
+					"\"$(SRCROOT)/../LeapSDK/lib\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -996,7 +998,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/LeapMIDIX/contrib/lib\"",
 					"\"$(SRCROOT)/../leapmidi/contrib\"",
-					"\"$(SRCROOT)/../Leap_SDK/lib\"",
+					"\"$(SRCROOT)/../LeapSDK/lib\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
