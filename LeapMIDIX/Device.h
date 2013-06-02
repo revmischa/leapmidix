@@ -16,7 +16,7 @@
 #include <pthread.h>
 #include <sys/time.h>
 #include <CoreMIDI/CoreMIDI.h>
-#include "MIDITypes.h"
+#include "LeapMIDI.h"
 
 namespace leapmidi {
     

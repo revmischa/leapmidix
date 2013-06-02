@@ -38,7 +38,7 @@ void LMXListener::init(Leap::Controller *controller) {
     setProgram(controlProgram);
   */
     FingerNotePtr noteProgram = make_shared<FingerNote>();
-    noteProgram->initGestures();
+    noteProgram->initGestures(gestureRecognizers());
     setProgram(noteProgram);
 }
 

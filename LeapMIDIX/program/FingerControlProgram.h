@@ -9,16 +9,20 @@
 #define leapmidi_MIDIProgramFingerControl_h
 
 #include "LeapMIDI.h"
+#include "MIDIProgram.h"
+#include "FingerGesture.h"
+
+using namespace std;
 
 namespace leapmidi {
     
-class FingerControl : public ControlProgram {
+class FingerControl : public MIDIProgram {
 public:
-    virtual void initGestures();
+    virtual void initGestures(std::vector<GesturePtr>&));
+
+    typedef shared_ptr<FingerControl> FingerControlPtr;
 };
     
-typedef shared_ptr<FingerControl> FingerControlPtr;
-
 }
 
 #endif

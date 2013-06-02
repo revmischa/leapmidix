@@ -219,7 +219,7 @@ void Device::queueControlPacket(leapmidi::midi_control_index control, leapmidi::
     assert(value <= 127);
     
     // assign channel value
-    // (hardcoded to channel 0 - Registered Parameter LSB)
+    // (hardcoded to channel 0 for now)
     unsigned char channelBase = 0xB0;
     unsigned char channel = 0;
     unsigned char midiChannel = channelBase + channel;
