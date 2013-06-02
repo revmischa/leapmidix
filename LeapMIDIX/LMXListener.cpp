@@ -72,7 +72,13 @@ void LMXListener::onControlUpdated(const Leap::Controller &controller, GesturePt
         << control->rawValue() << " mapped value: " << val << endl;
     }
     
-    device->addControlMessage(controlIndex, val);
+    
+    bool multithreaded = true;
+    
+    if (multithreaded)
+        device->addControlMessage(controlIndex, val);
+    else
+        device->queueControlPacket(controlIndex, val);
 }
     
 void LMXListener::onNoteUpdated(const Leap::Controller &controller, GesturePtr gesture, NotePtr note) {

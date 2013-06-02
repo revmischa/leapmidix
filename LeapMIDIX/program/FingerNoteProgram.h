@@ -15,13 +15,13 @@
 using namespace std;
 
 namespace leapmidi {
-    
-    class FingerNote : public MIDIProgram {
-    public:
-        virtual void initGestures(std::vector<GesturePtr>&gestureRecognizers);
-    };
-    
-    typedef shared_ptr<FingerNote> FingerNotePtr;
+
+class FingerNote : public MIDIProgram {
+public:
+    virtual void initGestures(std::vector<GesturePtr>&gestureRecognizers);
+};
+
+typedef shared_ptr<FingerNote> FingerNotePtr;
     
 }
 

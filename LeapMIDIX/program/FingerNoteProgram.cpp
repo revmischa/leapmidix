@@ -12,11 +12,11 @@
 
 namespace leapmidi {
     
-    void FingerNote::initGestures(std::vector<GesturePtr>&gestureRecognizers) {
-        // instantiate gesture recognizer singletons
-        FingerGesturePtr fingerGesture = make_shared<FingerGesture>();
-        gestureRecognizers.push_back((GesturePtr)fingerGesture);
-    }
+void FingerNote::initGestures(std::vector<GesturePtr>&gestureRecognizers) {
+    // instantiate gesture recognizer singletons
+    FingerGesturePtr fingerGesture = make_shared<FingerGesture>();
+    gestureRecognizers.push_back((GesturePtr)fingerGesture);
+}
     
 }
 

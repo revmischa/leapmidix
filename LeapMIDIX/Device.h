@@ -37,8 +37,15 @@ public:
     virtual ~Device();
     virtual void init();
     
+    // thread-safe interface
     virtual void addControlMessage(leapmidi::midi_control_index controlIndex, leapmidi::midi_control_value controlValue);
     virtual void addNoteMessage(leapmidi::midi_note_index noteIndex, leapmidi::midi_note_value noteValue);
+    
+    // add MIDI control messages to the MIDI packet queue to transmit
+    // these may block and not be safe to call from another thread
+    virtual void queueMessages(std::queue<midi_message> &messages);
+    virtual void queueControlPacket(leapmidi::midi_control_index control, leapmidi::midi_control_value value);
+    virtual void queueNotePacket(leapmidi::midi_note_index note, leapmidi::midi_note_value value);
     
 protected:
     virtual void initPacketList();
@@ -50,11 +57,6 @@ protected:
     pthread_mutex_t messageQueueMutex;
     pthread_t messageQueueThread;
     pthread_cond_t messageQueueCond;
-    
-    // add MIDI control messages to the MIDI packet queue to transmit
-    virtual void queueMessages(std::queue<midi_message> &messages);
-    virtual void queueControlPacket(leapmidi::midi_control_index control, leapmidi::midi_control_value value);
-    virtual void queueNotePacket(leapmidi::midi_note_index note, leapmidi::midi_note_value value);
     
     // send midi packets
     virtual OSStatus sendMIDIQueue();
